@@ -9,12 +9,11 @@ Para ubicar el programa
 >Crear un carpeta en C: y luego clonar el repositorio en esa carpeta
 tal que "path" quede: "C:\SableCC\work2_fdm"
 
-Crear ela arbol NFA y generar el parser
-debe abrir el cmd en la carpeta de work2_fdm
+Crear el arbol NFA y generar el parser
+debe abrir el cmd en la carpeta de "work2_fdm"
 click derecho "abrir en terminal"
 ejecute el siguiente comando:
 sablecc lenguaje.grammar
-
 >Si todo esta correcto debe aparecer:
 " State: INITIAL
  - Constructing NFA.
@@ -23,4 +22,4 @@ sablecc lenguaje.grammar
 ..............................................................................................................................................................................................................................................................
 ............................................................................................
  - resolving ACCEPT states.
-Generating the parser." 
+Generating the parser."

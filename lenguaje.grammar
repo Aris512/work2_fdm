@@ -1,0 +1,55 @@
+Package lenguaje;
+
+Helpers
+    digit = ['0'..'9'];
+    letter = ['a'..'z'];
+    id = letter (letter | digit)*;
+    string_char = letter | digit | ' ' | '!' | '.' | ',' | ':' | ';';
+    string_literal = '"' string_char* '"';
+    decimal = digit+ '.' digit+;
+    lf = 0x000a;
+    cr = 0x000d;
+    line_terminator = lf | cr | cr lf;
+    input_character = [0x0000..0x0009] | [0x000B..0x000C] | [0x000E..0xFFFF];
+    not_star = [0x0000..0x0029] | [0x002B..0xFFFF]; // todo menos '*'
+    not_star_not_slash = [0x0000..0x0029] | [0x002B..0x002C] | [0x002E..0xFFFF]; // todo menos '*' y '/'
+
+Tokens
+    int = 'int';
+    str = 'str';
+    double = 'double';
+    print = 'print';
+    println = 'println';
+    while = 'while';
+    if = 'if';
+    else = 'else';
+    input = 'input';
+    plus = '+';
+    minus = '-';
+    times = '*';
+    div = '/';
+    mod = '%';
+    eq = '=';
+    eqeq = '==';
+    gt = '>';
+    lt = '<';
+    and = '&&';
+    or = '||';
+    increment = '++';
+    decrement = '--';
+    lparen = '(';
+    rparen = ')';
+    lbrace = '{';
+    rbrace = '}';
+    semicolon = ';';
+    decimalnum = decimal;
+    number = digit+;
+    stringlit = string_literal;
+    identifier = id;
+    whitespace = (' ' | '\t' | '\n' | '\r')+;
+    multi_line_comment = '/*' not_star* '*' (not_star_not_slash not_star* '*')* '/';
+    line_comment = '//' input_character* line_terminator?;
+
+Ignored Tokens
+    multi_line_comment,
+    line_comment;

@@ -7,12 +7,6 @@ Helpers
     string_char = letter | digit | ' ' | '!' | '.' | ',' | ':' | ';';
     string_literal = '"' string_char* '"';
     decimal = digit+ '.' digit+;
-    lf = 0x000a;
-    cr = 0x000d;
-    line_terminator = lf | cr | cr lf;
-    input_character = [0x0000..0x0009] | [0x000B..0x000C] | [0x000E..0xFFFF];
-    not_star = [0x0000..0x0029] | [0x002B..0xFFFF]; // todo menos '*'
-    not_star_not_slash = [0x0000..0x0029] | [0x002B..0x002C] | [0x002E..0xFFFF]; // todo menos '*' y '/'
 
 Tokens
     int = 'int';
@@ -23,6 +17,7 @@ Tokens
     while = 'while';
     if = 'if';
     else = 'else';
+    else_if = 'else if';
     input = 'input';
     plus = '+';
     minus = '-';
@@ -47,9 +42,73 @@ Tokens
     stringlit = string_literal;
     identifier = id;
     whitespace = (' ' | '\t' | '\n' | '\r')+;
-    multi_line_comment = '/*' not_star* '*' (not_star_not_slash not_star* '*')* '/';
-    line_comment = '//' input_character* line_terminator?;
+    
 
 Ignored Tokens
-    multi_line_comment,
-    line_comment;
+    whitespace;
+
+Productions
+  expression =
+    {add} expression plus term |
+    {sub} expression minus term |
+    {pass} term;
+
+  term =
+    {mul} term times factor |
+    {div} term div factor |
+    {mod} term mod factor |
+    {pass} factor;
+
+  factor =
+    {number} number |
+    {decimal} decimalnum |
+    {id} identifier |
+    {paren} lparen expression rparen;
+
+  print_stmt =
+    {print} print lparen expression rparen semicolon |
+    {println} println lparen expression rparen semicolon;
+
+  while_stmt =
+    {while} while lparen condition rparen block;
+
+  block =
+    {block} lbrace statement* rbrace;
+
+  if_stmt =
+    {if} if lparen condition rparen block else_if_part? else_part?;
+
+  else_if_part =
+    {elseif} else_if lparen condition rparen block;
+
+  else_part =
+    {else} else block;
+
+  condition =
+    {or} condition or and_condition |
+    {pass} and_condition;
+
+  and_condition = 
+    {and} and_condition and relation |
+    {pass} relation;  
+
+  relation =
+    {eq} expression eqeq expression |
+    {gt} expression gt expression |
+    {lt} expression lt expression |
+    {paren} lparen condition rpar;
+
+  statement =
+    {print_stmt} print_stmt |
+    {while_stmt} while_stmt |
+    {if_stmt} if_stmt |
+    {assignment} assignment;
+
+  assignment =
+    {declare} type identifier eq expression semicolon |
+    {assign} identifier eq expression semicolon;
+
+  type =
+    {int_type} int |
+    {double_type} double |
+    {string_type} str;

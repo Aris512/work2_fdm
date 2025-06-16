@@ -43,8 +43,6 @@ public interface Analysis extends Switch
     void caseTStringlit(TStringlit node);
     void caseTIdentifier(TIdentifier node);
     void caseTWhitespace(TWhitespace node);
-    void caseTMultiLineComment(TMultiLineComment node);
-    void caseTLineComment(TLineComment node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
 }

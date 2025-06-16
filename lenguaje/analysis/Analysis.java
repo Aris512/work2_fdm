@@ -22,6 +22,9 @@ public interface Analysis extends Switch
     void caseAModFactor(AModFactor node);
     void caseANumberTerm(ANumberTerm node);
     void caseAExpressionTerm(AExpressionTerm node);
+    void caseACompLogicExpression(ACompLogicExpression node);
+    void caseAOrLogicExpression(AOrLogicExpression node);
+    void caseAAritCompExpr(AAritCompExpr node);
     void caseAIfStatement(AIfStatement node);
     void caseAWhileStatement(AWhileStatement node);
     void caseAPrintStatement(APrintStatement node);
@@ -51,10 +54,13 @@ public interface Analysis extends Switch
     void caseTTimes(TTimes node);
     void caseTDiv(TDiv node);
     void caseTMod(TMod node);
-    void caseTEq(TEq node);
+    void caseTE(TE node);
     void caseTEqeq(TEqeq node);
     void caseTGt(TGt node);
     void caseTLt(TLt node);
+    void caseTNoteq(TNoteq node);
+    void caseTGte(TGte node);
+    void caseTLte(TLte node);
     void caseTAnd(TAnd node);
     void caseTOr(TOr node);
     void caseTIncrement(TIncrement node);

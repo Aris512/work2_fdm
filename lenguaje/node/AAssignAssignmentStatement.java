@@ -8,7 +8,7 @@ import lenguaje.analysis.*;
 public final class AAssignAssignmentStatement extends PAssignmentStatement
 {
     private TIdentifier _identifier_;
-    private TEq _eq_;
+    private TE _e_;
     private PExpression _expression_;
     private TSemicolon _semicolon_;
 
@@ -19,14 +19,14 @@ public final class AAssignAssignmentStatement extends PAssignmentStatement
 
     public AAssignAssignmentStatement(
         @SuppressWarnings("hiding") TIdentifier _identifier_,
-        @SuppressWarnings("hiding") TEq _eq_,
+        @SuppressWarnings("hiding") TE _e_,
         @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
         setIdentifier(_identifier_);
 
-        setEq(_eq_);
+        setE(_e_);
 
         setExpression(_expression_);
 
@@ -39,7 +39,7 @@ public final class AAssignAssignmentStatement extends PAssignmentStatement
     {
         return new AAssignAssignmentStatement(
             cloneNode(this._identifier_),
-            cloneNode(this._eq_),
+            cloneNode(this._e_),
             cloneNode(this._expression_),
             cloneNode(this._semicolon_));
     }
@@ -75,16 +75,16 @@ public final class AAssignAssignmentStatement extends PAssignmentStatement
         this._identifier_ = node;
     }
 
-    public TEq getEq()
+    public TE getE()
     {
-        return this._eq_;
+        return this._e_;
     }
 
-    public void setEq(TEq node)
+    public void setE(TE node)
     {
-        if(this._eq_ != null)
+        if(this._e_ != null)
         {
-            this._eq_.parent(null);
+            this._e_.parent(null);
         }
 
         if(node != null)
@@ -97,7 +97,7 @@ public final class AAssignAssignmentStatement extends PAssignmentStatement
             node.parent(this);
         }
 
-        this._eq_ = node;
+        this._e_ = node;
     }
 
     public PExpression getExpression()
@@ -155,7 +155,7 @@ public final class AAssignAssignmentStatement extends PAssignmentStatement
     {
         return ""
             + toString(this._identifier_)
-            + toString(this._eq_)
+            + toString(this._e_)
             + toString(this._expression_)
             + toString(this._semicolon_);
     }
@@ -170,9 +170,9 @@ public final class AAssignAssignmentStatement extends PAssignmentStatement
             return;
         }
 
-        if(this._eq_ == child)
+        if(this._e_ == child)
         {
-            this._eq_ = null;
+            this._e_ = null;
             return;
         }
 
@@ -201,9 +201,9 @@ public final class AAssignAssignmentStatement extends PAssignmentStatement
             return;
         }
 
-        if(this._eq_ == oldChild)
+        if(this._e_ == oldChild)
         {
-            setEq((TEq) newChild);
+            setE((TE) newChild);
             return;
         }
 

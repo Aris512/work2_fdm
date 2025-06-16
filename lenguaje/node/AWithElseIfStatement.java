@@ -7,10 +7,11 @@ import lenguaje.analysis.*;
 @SuppressWarnings("nls")
 public final class AWithElseIfStatement extends PIfStatement
 {
-    private TElse _else_;
+    private TIf _if_;
     private TLparen _lparen_;
-    private PExpression _expression_;
+    private PLogicExpression _logicExpression_;
     private TRparen _rparen_;
+    private TElse _else_;
     private PStatement _statement_;
 
     public AWithElseIfStatement()
@@ -19,20 +20,23 @@ public final class AWithElseIfStatement extends PIfStatement
     }
 
     public AWithElseIfStatement(
-        @SuppressWarnings("hiding") TElse _else_,
+        @SuppressWarnings("hiding") TIf _if_,
         @SuppressWarnings("hiding") TLparen _lparen_,
-        @SuppressWarnings("hiding") PExpression _expression_,
+        @SuppressWarnings("hiding") PLogicExpression _logicExpression_,
         @SuppressWarnings("hiding") TRparen _rparen_,
+        @SuppressWarnings("hiding") TElse _else_,
         @SuppressWarnings("hiding") PStatement _statement_)
     {
         // Constructor
-        setElse(_else_);
+        setIf(_if_);
 
         setLparen(_lparen_);
 
-        setExpression(_expression_);
+        setLogicExpression(_logicExpression_);
 
         setRparen(_rparen_);
+
+        setElse(_else_);
 
         setStatement(_statement_);
 
@@ -42,10 +46,11 @@ public final class AWithElseIfStatement extends PIfStatement
     public Object clone()
     {
         return new AWithElseIfStatement(
-            cloneNode(this._else_),
+            cloneNode(this._if_),
             cloneNode(this._lparen_),
-            cloneNode(this._expression_),
+            cloneNode(this._logicExpression_),
             cloneNode(this._rparen_),
+            cloneNode(this._else_),
             cloneNode(this._statement_));
     }
 
@@ -55,16 +60,16 @@ public final class AWithElseIfStatement extends PIfStatement
         ((Analysis) sw).caseAWithElseIfStatement(this);
     }
 
-    public TElse getElse()
+    public TIf getIf()
     {
-        return this._else_;
+        return this._if_;
     }
 
-    public void setElse(TElse node)
+    public void setIf(TIf node)
     {
-        if(this._else_ != null)
+        if(this._if_ != null)
         {
-            this._else_.parent(null);
+            this._if_.parent(null);
         }
 
         if(node != null)
@@ -77,7 +82,7 @@ public final class AWithElseIfStatement extends PIfStatement
             node.parent(this);
         }
 
-        this._else_ = node;
+        this._if_ = node;
     }
 
     public TLparen getLparen()
@@ -105,16 +110,16 @@ public final class AWithElseIfStatement extends PIfStatement
         this._lparen_ = node;
     }
 
-    public PExpression getExpression()
+    public PLogicExpression getLogicExpression()
     {
-        return this._expression_;
+        return this._logicExpression_;
     }
 
-    public void setExpression(PExpression node)
+    public void setLogicExpression(PLogicExpression node)
     {
-        if(this._expression_ != null)
+        if(this._logicExpression_ != null)
         {
-            this._expression_.parent(null);
+            this._logicExpression_.parent(null);
         }
 
         if(node != null)
@@ -127,7 +132,7 @@ public final class AWithElseIfStatement extends PIfStatement
             node.parent(this);
         }
 
-        this._expression_ = node;
+        this._logicExpression_ = node;
     }
 
     public TRparen getRparen()
@@ -153,6 +158,31 @@ public final class AWithElseIfStatement extends PIfStatement
         }
 
         this._rparen_ = node;
+    }
+
+    public TElse getElse()
+    {
+        return this._else_;
+    }
+
+    public void setElse(TElse node)
+    {
+        if(this._else_ != null)
+        {
+            this._else_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._else_ = node;
     }
 
     public PStatement getStatement()
@@ -184,10 +214,11 @@ public final class AWithElseIfStatement extends PIfStatement
     public String toString()
     {
         return ""
-            + toString(this._else_)
+            + toString(this._if_)
             + toString(this._lparen_)
-            + toString(this._expression_)
+            + toString(this._logicExpression_)
             + toString(this._rparen_)
+            + toString(this._else_)
             + toString(this._statement_);
     }
 
@@ -195,9 +226,9 @@ public final class AWithElseIfStatement extends PIfStatement
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._else_ == child)
+        if(this._if_ == child)
         {
-            this._else_ = null;
+            this._if_ = null;
             return;
         }
 
@@ -207,15 +238,21 @@ public final class AWithElseIfStatement extends PIfStatement
             return;
         }
 
-        if(this._expression_ == child)
+        if(this._logicExpression_ == child)
         {
-            this._expression_ = null;
+            this._logicExpression_ = null;
             return;
         }
 
         if(this._rparen_ == child)
         {
             this._rparen_ = null;
+            return;
+        }
+
+        if(this._else_ == child)
+        {
+            this._else_ = null;
             return;
         }
 
@@ -232,9 +269,9 @@ public final class AWithElseIfStatement extends PIfStatement
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._else_ == oldChild)
+        if(this._if_ == oldChild)
         {
-            setElse((TElse) newChild);
+            setIf((TIf) newChild);
             return;
         }
 
@@ -244,15 +281,21 @@ public final class AWithElseIfStatement extends PIfStatement
             return;
         }
 
-        if(this._expression_ == oldChild)
+        if(this._logicExpression_ == oldChild)
         {
-            setExpression((PExpression) newChild);
+            setLogicExpression((PLogicExpression) newChild);
             return;
         }
 
         if(this._rparen_ == oldChild)
         {
             setRparen((TRparen) newChild);
+            return;
+        }
+
+        if(this._else_ == oldChild)
+        {
+            setElse((TElse) newChild);
             return;
         }
 

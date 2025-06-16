@@ -135,6 +135,24 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseACompLogicExpression(ACompLogicExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOrLogicExpression(AOrLogicExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAritCompExpr(AAritCompExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAIfStatement(AIfStatement node)
     {
         defaultCase(node);
@@ -303,7 +321,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTEq(TEq node)
+    public void caseTE(TE node)
     {
         defaultCase(node);
     }
@@ -322,6 +340,24 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTLt(TLt node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNoteq(TNoteq node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTGte(TGte node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTLte(TLte node)
     {
         defaultCase(node);
     }

@@ -5,69 +5,44 @@ package lenguaje.node;
 import lenguaje.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpressionTerm extends PTerm
+public final class AOrLogicExpression extends PLogicExpression
 {
-    private TLparen _lparen_;
     private PLogicExpression _logicExpression_;
-    private TRparen _rparen_;
+    private TOr _or_;
+    private PCompExpr _compExpr_;
 
-    public AExpressionTerm()
+    public AOrLogicExpression()
     {
         // Constructor
     }
 
-    public AExpressionTerm(
-        @SuppressWarnings("hiding") TLparen _lparen_,
+    public AOrLogicExpression(
         @SuppressWarnings("hiding") PLogicExpression _logicExpression_,
-        @SuppressWarnings("hiding") TRparen _rparen_)
+        @SuppressWarnings("hiding") TOr _or_,
+        @SuppressWarnings("hiding") PCompExpr _compExpr_)
     {
         // Constructor
-        setLparen(_lparen_);
-
         setLogicExpression(_logicExpression_);
 
-        setRparen(_rparen_);
+        setOr(_or_);
+
+        setCompExpr(_compExpr_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpressionTerm(
-            cloneNode(this._lparen_),
+        return new AOrLogicExpression(
             cloneNode(this._logicExpression_),
-            cloneNode(this._rparen_));
+            cloneNode(this._or_),
+            cloneNode(this._compExpr_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpressionTerm(this);
-    }
-
-    public TLparen getLparen()
-    {
-        return this._lparen_;
-    }
-
-    public void setLparen(TLparen node)
-    {
-        if(this._lparen_ != null)
-        {
-            this._lparen_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lparen_ = node;
+        ((Analysis) sw).caseAOrLogicExpression(this);
     }
 
     public PLogicExpression getLogicExpression()
@@ -95,16 +70,16 @@ public final class AExpressionTerm extends PTerm
         this._logicExpression_ = node;
     }
 
-    public TRparen getRparen()
+    public TOr getOr()
     {
-        return this._rparen_;
+        return this._or_;
     }
 
-    public void setRparen(TRparen node)
+    public void setOr(TOr node)
     {
-        if(this._rparen_ != null)
+        if(this._or_ != null)
         {
-            this._rparen_.parent(null);
+            this._or_.parent(null);
         }
 
         if(node != null)
@@ -117,37 +92,62 @@ public final class AExpressionTerm extends PTerm
             node.parent(this);
         }
 
-        this._rparen_ = node;
+        this._or_ = node;
+    }
+
+    public PCompExpr getCompExpr()
+    {
+        return this._compExpr_;
+    }
+
+    public void setCompExpr(PCompExpr node)
+    {
+        if(this._compExpr_ != null)
+        {
+            this._compExpr_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._compExpr_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._lparen_)
             + toString(this._logicExpression_)
-            + toString(this._rparen_);
+            + toString(this._or_)
+            + toString(this._compExpr_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._lparen_ == child)
-        {
-            this._lparen_ = null;
-            return;
-        }
-
         if(this._logicExpression_ == child)
         {
             this._logicExpression_ = null;
             return;
         }
 
-        if(this._rparen_ == child)
+        if(this._or_ == child)
         {
-            this._rparen_ = null;
+            this._or_ = null;
+            return;
+        }
+
+        if(this._compExpr_ == child)
+        {
+            this._compExpr_ = null;
             return;
         }
 
@@ -158,21 +158,21 @@ public final class AExpressionTerm extends PTerm
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._lparen_ == oldChild)
-        {
-            setLparen((TLparen) newChild);
-            return;
-        }
-
         if(this._logicExpression_ == oldChild)
         {
             setLogicExpression((PLogicExpression) newChild);
             return;
         }
 
-        if(this._rparen_ == oldChild)
+        if(this._or_ == oldChild)
         {
-            setRparen((TRparen) newChild);
+            setOr((TOr) newChild);
+            return;
+        }
+
+        if(this._compExpr_ == oldChild)
+        {
+            setCompExpr((PCompExpr) newChild);
             return;
         }
 

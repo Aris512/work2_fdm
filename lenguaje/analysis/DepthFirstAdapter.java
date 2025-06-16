@@ -286,15 +286,86 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getLparen().apply(this);
         }
-        if(node.getExpression() != null)
+        if(node.getLogicExpression() != null)
         {
-            node.getExpression().apply(this);
+            node.getLogicExpression().apply(this);
         }
         if(node.getRparen() != null)
         {
             node.getRparen().apply(this);
         }
         outAExpressionTerm(node);
+    }
+
+    public void inACompLogicExpression(ACompLogicExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outACompLogicExpression(ACompLogicExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseACompLogicExpression(ACompLogicExpression node)
+    {
+        inACompLogicExpression(node);
+        if(node.getCompExpr() != null)
+        {
+            node.getCompExpr().apply(this);
+        }
+        outACompLogicExpression(node);
+    }
+
+    public void inAOrLogicExpression(AOrLogicExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAOrLogicExpression(AOrLogicExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAOrLogicExpression(AOrLogicExpression node)
+    {
+        inAOrLogicExpression(node);
+        if(node.getLogicExpression() != null)
+        {
+            node.getLogicExpression().apply(this);
+        }
+        if(node.getOr() != null)
+        {
+            node.getOr().apply(this);
+        }
+        if(node.getCompExpr() != null)
+        {
+            node.getCompExpr().apply(this);
+        }
+        outAOrLogicExpression(node);
+    }
+
+    public void inAAritCompExpr(AAritCompExpr node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAAritCompExpr(AAritCompExpr node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAAritCompExpr(AAritCompExpr node)
+    {
+        inAAritCompExpr(node);
+        if(node.getExpression() != null)
+        {
+            node.getExpression().apply(this);
+        }
+        outAAritCompExpr(node);
     }
 
     public void inAIfStatement(AIfStatement node)
@@ -424,9 +495,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getLparen().apply(this);
         }
-        if(node.getExpression() != null)
+        if(node.getLogicExpression() != null)
         {
-            node.getExpression().apply(this);
+            node.getLogicExpression().apply(this);
         }
         if(node.getRparen() != null)
         {
@@ -453,21 +524,25 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAWithElseIfStatement(AWithElseIfStatement node)
     {
         inAWithElseIfStatement(node);
-        if(node.getElse() != null)
+        if(node.getIf() != null)
         {
-            node.getElse().apply(this);
+            node.getIf().apply(this);
         }
         if(node.getLparen() != null)
         {
             node.getLparen().apply(this);
         }
-        if(node.getExpression() != null)
+        if(node.getLogicExpression() != null)
         {
-            node.getExpression().apply(this);
+            node.getLogicExpression().apply(this);
         }
         if(node.getRparen() != null)
         {
             node.getRparen().apply(this);
+        }
+        if(node.getElse() != null)
+        {
+            node.getElse().apply(this);
         }
         if(node.getStatement() != null)
         {
@@ -498,9 +573,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getLbrace().apply(this);
         }
-        if(node.getExpression() != null)
+        if(node.getLogicExpression() != null)
         {
-            node.getExpression().apply(this);
+            node.getLogicExpression().apply(this);
         }
         if(node.getRbrace() != null)
         {
@@ -711,9 +786,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getIdentifier().apply(this);
         }
-        if(node.getEq() != null)
+        if(node.getE() != null)
         {
-            node.getEq().apply(this);
+            node.getE().apply(this);
         }
         if(node.getExpression() != null)
         {

@@ -29,10 +29,13 @@ Tokens
     times = '*';
     div = '/';
     mod = '%';
-    eq = '=';
+    e = '=';
     eqeq = '==';
     gt = '>';
     lt = '<';
+    noteq = '!=';
+    gte = '>=';
+    lte = '<=';
     and = '&&';
     or = '||';
     increment = '++';
@@ -71,7 +74,14 @@ Productions
 
     term =
         {number} number |
-        {expression} lparen expression rparen;
+        {expression} lparen logic_expression rparen;
+    
+    logic_expression =
+        {comp} comp_expr |
+        {or} logic_expression or comp_expr;
+    
+    comp_expr =
+        {arit} expression;
 
     statement =
         {if} if_statement |
@@ -81,11 +91,11 @@ Productions
         {block} block_statement;
 
     if_statement =
-        {simple} if lparen expression rparen statement |
-        {with_else} else lparen expression rparen statement;
+        {simple} if lparen logic_expression rparen statement |
+        {with_else} if lparen logic_expression rparen else statement;
 
     while_statement =
-        {loop} while lbrace expression rbrace statement;
+        {loop} while lbrace logic_expression rbrace statement;
 
     block_statement =
         {block} lbrace statement* rbrace;
@@ -97,4 +107,4 @@ Productions
         {println_expr} println lparen expression rparen semicolon;
 
     assignment_statement =
-        {assign} identifier eq expression semicolon;
+        {assign} identifier e expression semicolon;

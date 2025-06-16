@@ -9,7 +9,7 @@ public final class ASimpleIfStatement extends PIfStatement
 {
     private TIf _if_;
     private TLparen _lparen_;
-    private PExpression _expression_;
+    private PLogicExpression _logicExpression_;
     private TRparen _rparen_;
     private PStatement _statement_;
 
@@ -21,7 +21,7 @@ public final class ASimpleIfStatement extends PIfStatement
     public ASimpleIfStatement(
         @SuppressWarnings("hiding") TIf _if_,
         @SuppressWarnings("hiding") TLparen _lparen_,
-        @SuppressWarnings("hiding") PExpression _expression_,
+        @SuppressWarnings("hiding") PLogicExpression _logicExpression_,
         @SuppressWarnings("hiding") TRparen _rparen_,
         @SuppressWarnings("hiding") PStatement _statement_)
     {
@@ -30,7 +30,7 @@ public final class ASimpleIfStatement extends PIfStatement
 
         setLparen(_lparen_);
 
-        setExpression(_expression_);
+        setLogicExpression(_logicExpression_);
 
         setRparen(_rparen_);
 
@@ -44,7 +44,7 @@ public final class ASimpleIfStatement extends PIfStatement
         return new ASimpleIfStatement(
             cloneNode(this._if_),
             cloneNode(this._lparen_),
-            cloneNode(this._expression_),
+            cloneNode(this._logicExpression_),
             cloneNode(this._rparen_),
             cloneNode(this._statement_));
     }
@@ -105,16 +105,16 @@ public final class ASimpleIfStatement extends PIfStatement
         this._lparen_ = node;
     }
 
-    public PExpression getExpression()
+    public PLogicExpression getLogicExpression()
     {
-        return this._expression_;
+        return this._logicExpression_;
     }
 
-    public void setExpression(PExpression node)
+    public void setLogicExpression(PLogicExpression node)
     {
-        if(this._expression_ != null)
+        if(this._logicExpression_ != null)
         {
-            this._expression_.parent(null);
+            this._logicExpression_.parent(null);
         }
 
         if(node != null)
@@ -127,7 +127,7 @@ public final class ASimpleIfStatement extends PIfStatement
             node.parent(this);
         }
 
-        this._expression_ = node;
+        this._logicExpression_ = node;
     }
 
     public TRparen getRparen()
@@ -186,7 +186,7 @@ public final class ASimpleIfStatement extends PIfStatement
         return ""
             + toString(this._if_)
             + toString(this._lparen_)
-            + toString(this._expression_)
+            + toString(this._logicExpression_)
             + toString(this._rparen_)
             + toString(this._statement_);
     }
@@ -207,9 +207,9 @@ public final class ASimpleIfStatement extends PIfStatement
             return;
         }
 
-        if(this._expression_ == child)
+        if(this._logicExpression_ == child)
         {
-            this._expression_ = null;
+            this._logicExpression_ = null;
             return;
         }
 
@@ -244,9 +244,9 @@ public final class ASimpleIfStatement extends PIfStatement
             return;
         }
 
-        if(this._expression_ == oldChild)
+        if(this._logicExpression_ == oldChild)
         {
-            setExpression((PExpression) newChild);
+            setLogicExpression((PLogicExpression) newChild);
             return;
         }
 

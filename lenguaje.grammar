@@ -81,7 +81,13 @@ Productions
         {or} logic_expression or comp_expr;
     
     comp_expr =
-        {arit} expression;
+        {arit} expression |
+        {eqeq} expression eqeq expression |
+        {noteq} expression noteq expression |
+        {lt} expression lt expression |
+        {lte} expression lte expression |
+        {gt} expression gt expression |
+        {gte} expression gte expression;
 
     statement =
         {if} if_statement |

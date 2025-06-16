@@ -261,6 +261,18 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTMultiLineComment(TMultiLineComment node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTLineComment(TLineComment node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseEOF(EOF node)
     {
         defaultCase(node);

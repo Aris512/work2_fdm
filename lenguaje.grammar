@@ -53,3 +53,48 @@ Tokens
 Ignored Tokens
     multi_line_comment,
     line_comment;
+
+Productions
+    program
+        = statement*;
+
+    expression =
+        {factor} factor |
+        {plus} expression plus factor |
+        {minus} expression minus factor;
+
+    factor =
+        {term} term |
+        {times} factor times term |
+        {div} factor div term |
+        {mod} factor mod term;
+
+    term =
+        {number} number |
+        {expression} lparen expression rparen;
+
+    statement =
+        {if} if_statement |
+        {while} while_statement |
+        {print} print_statement |
+        {assignment} assignment_statement |
+        {block} block_statement;
+
+    if_statement =
+        {simple} if lparen expression rparen statement |
+        {with_else} else lparen expression rparen statement;
+
+    while_statement =
+        {loop} while lbrace expression rbrace statement;
+
+    block_statement =
+        {block} lbrace statement* rbrace;
+
+    print_statement =
+        {print_string} print lparen stringlit rparen semicolon |
+        {print_expr} print lparen expression rparen semicolon |
+        {println_string} println lparen stringlit rparen semicolon |
+        {println_expr} println lparen expression rparen semicolon;
+
+    assignment_statement =
+        {assign} identifier eq expression semicolon;

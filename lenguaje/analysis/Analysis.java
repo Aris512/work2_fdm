@@ -11,6 +11,32 @@ public interface Analysis extends Switch
     Object getOut(Node node);
     void setOut(Node node, Object o);
 
+    void caseStart(Start node);
+    void caseAProgram(AProgram node);
+    void caseAFactorExpression(AFactorExpression node);
+    void caseAPlusExpression(APlusExpression node);
+    void caseAMinusExpression(AMinusExpression node);
+    void caseATermFactor(ATermFactor node);
+    void caseATimesFactor(ATimesFactor node);
+    void caseADivFactor(ADivFactor node);
+    void caseAModFactor(AModFactor node);
+    void caseANumberTerm(ANumberTerm node);
+    void caseAExpressionTerm(AExpressionTerm node);
+    void caseAIfStatement(AIfStatement node);
+    void caseAWhileStatement(AWhileStatement node);
+    void caseAPrintStatement(APrintStatement node);
+    void caseAAssignmentStatement(AAssignmentStatement node);
+    void caseABlockStatement(ABlockStatement node);
+    void caseASimpleIfStatement(ASimpleIfStatement node);
+    void caseAWithElseIfStatement(AWithElseIfStatement node);
+    void caseALoopWhileStatement(ALoopWhileStatement node);
+    void caseABlockBlockStatement(ABlockBlockStatement node);
+    void caseAPrintStringPrintStatement(APrintStringPrintStatement node);
+    void caseAPrintExprPrintStatement(APrintExprPrintStatement node);
+    void caseAPrintlnStringPrintStatement(APrintlnStringPrintStatement node);
+    void caseAPrintlnExprPrintStatement(APrintlnExprPrintStatement node);
+    void caseAAssignAssignmentStatement(AAssignAssignmentStatement node);
+
     void caseTInt(TInt node);
     void caseTStr(TStr node);
     void caseTDouble(TDouble node);

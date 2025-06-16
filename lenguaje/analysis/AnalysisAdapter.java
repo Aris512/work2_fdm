@@ -69,6 +69,156 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseStart(Start node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAProgram(AProgram node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFactorExpression(AFactorExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPlusExpression(APlusExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMinusExpression(AMinusExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATermFactor(ATermFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATimesFactor(ATimesFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADivFactor(ADivFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAModFactor(AModFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANumberTerm(ANumberTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpressionTerm(AExpressionTerm node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIfStatement(AIfStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileStatement(AWhileStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintStatement(APrintStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAssignmentStatement(AAssignmentStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABlockStatement(ABlockStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASimpleIfStatement(ASimpleIfStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWithElseIfStatement(AWithElseIfStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALoopWhileStatement(ALoopWhileStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABlockBlockStatement(ABlockBlockStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintStringPrintStatement(APrintStringPrintStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintExprPrintStatement(APrintExprPrintStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintlnStringPrintStatement(APrintlnStringPrintStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintlnExprPrintStatement(APrintlnExprPrintStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAssignAssignmentStatement(AAssignAssignmentStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTInt(TInt node)
     {
         defaultCase(node);

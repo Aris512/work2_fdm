@@ -2,7 +2,8 @@ Se debe tener:
 > Instalado java
 version: openjdk version "21.0.5" 2024-10-15 LTS
 para revisar colocar en el cmd: java -version
-> Intalado Sablecc-3.7 
+
+Intalado Sablecc-3.7 
 ubicado en la carpeta "C:\sablecc-3.7"
 
 Para ubicar el programa

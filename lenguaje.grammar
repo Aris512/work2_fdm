@@ -1,4 +1,4 @@
-Package lenguaje;
+Package work;
 
 Helpers
   digit = ['0' .. '9'];

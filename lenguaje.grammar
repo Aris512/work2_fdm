@@ -1,116 +1,122 @@
 Package lenguaje;
 
 Helpers
-    digit = ['0'..'9'];
-    letter = ['a'..'z'];
-    id = letter (letter | digit)*;
-    string_char = letter | digit | ' ' | '!' | '.' | ',' | ':' | ';';
-    string_literal = '"' string_char* '"';
-    decimal = digit+ '.' digit+;
-    lf = 0x000a;
-    cr = 0x000d;
-    line_terminator = lf | cr | cr lf;
-    input_character = [0x0000..0x0009] | [0x000B..0x000C] | [0x000E..0xFFFF];
-    not_star = [0x0000..0x0029] | [0x002B..0xFFFF]; // todo menos '*'
-    not_star_not_slash = [0x0000..0x0029] | [0x002B..0x002C] | [0x002E..0xFFFF]; // todo menos '*' y '/'
+  digit = ['0' .. '9'];
+  not_star       = [[0 .. 0xffff] - '*'];
+  not_slash      = [[0 .. 0xffff] - '/'];
+  star_not_slash = '*' not_slash;
+  comment_char   = not_star | star_not_slash;
+  non_quote      = [[0 .. 0xffff] - '"'];
 
 Tokens
-    int = 'int';
-    str = 'str';
-    double = 'double';
-    print = 'print';
-    println = 'println';
-    while = 'while';
-    if = 'if';
-    else = 'else';
-    input = 'input';
-    plus = '+';
-    minus = '-';
-    times = '*';
-    div = '/';
-    mod = '%';
-    e = '=';
-    eqeq = '==';
-    gt = '>';
-    lt = '<';
-    noteq = '!=';
-    gte = '>=';
-    lte = '<=';
-    and = '&&';
-    or = '||';
-    increment = '++';
-    decrement = '--';
-    lparen = '(';
-    rparen = ')';
-    lbrace = '{';
-    rbrace = '}';
-    semicolon = ';';
-    decimalnum = decimal;
-    number = digit+;
-    stringlit = string_literal;
-    identifier = id;
-    whitespace = (' ' | '\t' | '\n' | '\r')+;
-    multi_line_comment = '/*' not_star* '*' (not_star_not_slash not_star* '*')* '/';
-    line_comment = '//' input_character* line_terminator?;
+  comment = '/*' comment_char* '*/';
+  int_literal = digit+;
+  double_literal = digit+ '.' digit+;
+  number = digit+ | digit+ '.' digit+;
+  string_literal = '"' non_quote* '"';
+  int = 'int';
+  double = 'double';
+  str = 'str';
+  plus = '+';
+  minus = '-';
+  mult = '*';
+  div = '/';
+  mod = '%';
+  l_par = '(';
+  r_par = ')';
+  semicolon = ';';
+  equals = '=';
+  double_equals = '==';
+  not_equals = '!=';
+  less = '<';
+  less_eq = '<=';
+  greater = '>';
+  greater_eq = '>=';
+  and = '&&';
+  or = '||';
+  if = 'if';
+  else = 'else';
+  l_bracket = '{';
+  r_bracket = '}';
+  var = ['a' .. 'z'] (['a' .. 'z'] | ['0' .. '9'])*;
+  print = 'print';
+  println = 'println';
+  main = 'main';
+  while = 'while';
+  input = 'input';
+  blank = ( ' ' | 13 | 10 )+;
 
 Ignored Tokens
-    multi_line_comment,
-    line_comment;
+  blank, comment;
 
 Productions
-    program
-        = statement*;
+  main_program = main l_par r_par l_bracket program r_bracket;
 
-    expression =
-        {factor} factor |
-        {plus} expression plus factor |
-        {minus} expression minus factor;
+  program = {format} declaration* line*;
 
-    factor =
-        {term} term |
-        {times} factor times term |
-        {div} factor div term |
-        {mod} factor mod term;
+  declaration = 
+    {int_declaration} int var semicolon | 
+    {str_declaration} str var semicolon | 
+    {double_declaration} double var semicolon | 
+    {int_declaration_assignment} int assignment semicolon | 
+    {str_declaration_assignment} str assignment semicolon | 
+    {double_declaration_assignment} double assignment semicolon;
 
-    term =
-        {number} number |
-        {expression} lparen logic_expression rparen;
-    
-    logic_expression =
-        {comp} comp_expr |
-        {or} logic_expression or comp_expr;
-    
-    comp_expr =
-        {arit} expression |
-        {eqeq} expression eqeq expression |
-        {noteq} expression noteq expression |
-        {lt} expression lt expression |
-        {lte} expression lte expression |
-        {gt} expression gt expression |
-        {gte} expression gte expression;
+  line = 
+    {print_var} print l_par var r_par semicolon | 
+    {print_string} print l_par string_literal r_par semicolon|
+    {print_number} print l_par number r_par semicolon |
+    {input} input l_par var r_par semicolon |
+    {flow_control} flow_control |
+    {assignment} assignment semicolon;
 
-    statement =
-        {if} if_statement |
-        {while} while_statement |
-        {print} print_statement |
-        {assignment} assignment_statement |
-        {block} block_statement;
+  flow_control =
+    {if} if l_par condition r_par l_bracket line* r_bracket |
+    {if_else} if l_par condition r_par l_bracket line* r_bracket else_statement |
+    {while} while l_par condition r_par l_bracket line* r_bracket;
 
-    if_statement =
-        {simple} if lparen logic_expression rparen statement |
-        {with_else} if lparen logic_expression rparen else statement;
+  else_statement = else l_bracket line* r_bracket;
 
-    while_statement =
-        {loop} while lbrace logic_expression rbrace statement;
+  condition = 
+    {second_condition} second_condition |
+    {and} condition and second_condition |
+    {or} condition or second_condition;
 
-    block_statement =
-        {block} lbrace statement* rbrace;
+  second_condition = 
+    {equals} item1 equals item2 |
+    {not_equals} item1 not_equals item2 |
+    {greater} item1 greater item2 |
+    {greater_eq} item1 greater_eq item2 |
+    {less} item1 less item2 |
+    {less_eq} item1 less_eq item2 |
+    {grouped} l_par condition r_par;
 
-    print_statement =
-        {print_string} print lparen stringlit rparen semicolon |
-        {print_expr} print lparen expression rparen semicolon |
-        {println_string} println lparen stringlit rparen semicolon |
-        {println_expr} println lparen expression rparen semicolon;
+  item1 =
+    {var} var |
+    {number} number |
+    {str} string_literal;
 
-    assignment_statement =
-        {assign} identifier e expression semicolon;
+  item2 = 
+    {var} var |
+    {number} number |
+    {str} string_literal;
+
+  assignment = 
+    {str_assignment} var equals string_literal |
+    {expr_assignment} var equals expr;
+
+  expr = 
+    {factor} factor | 
+    {plus} expr plus factor |
+    {minus} expr minus factor;
+
+  factor =
+    {term} term |
+    {mult} factor mult term |
+    {div} factor div term | 
+    {mod} factor mod term;
+
+  term =
+    {number} number |
+    {var} var |
+    {expr} l_par expr r_par;

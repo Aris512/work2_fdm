@@ -24,3 +24,13 @@ sablecc lenguaje.grammar
 ............................................................................................
  - resolving ACCEPT states.
 Generating the parser."
+
+PAra ejecutarlo deben seguir los pasos:
+>1 compilar los archivos desde la consola
+comandos:  
+javac work\Main.java  
+javac work\Interpreter.java    
+
+>2 ejecutar el programa desde consola 
+comando:
+java work\Main.java

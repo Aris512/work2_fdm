@@ -1,6 +1,5 @@
 main() {
-  int x;
-  x = 5;
-    print("x es:");
-    print(x);
+  string = c;
+  c = "Hola mundo";
+  print(c);
 }

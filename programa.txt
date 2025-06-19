@@ -1,11 +1,9 @@
 main() {
-  int x;
-  int i;
-  x=5;
-  y=2;
-  while(y<=x){
-    y=y+1;
-    print("avanza");
+  string =a;
+  a ="hola";
+  if(a="hola"){
+    print("true");
+  }else{
+    print("false");
   }
-  print("finaliza");
 }

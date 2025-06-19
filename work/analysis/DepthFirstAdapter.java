@@ -31,9 +31,30 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseStart(Start node)
     {
         inStart(node);
-        node.getPMainProgram().apply(this);
+        node.getPStart().apply(this);
         node.getEOF().apply(this);
         outStart(node);
+    }
+
+    public void inAStart(AStart node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStart(AStart node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStart(AStart node)
+    {
+        inAStart(node);
+        if(node.getMainProgram() != null)
+        {
+            node.getMainProgram().apply(this);
+        }
+        outAStart(node);
     }
 
     public void inAMainProgram(AMainProgram node)
@@ -77,20 +98,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAMainProgram(node);
     }
 
-    public void inAFormatProgram(AFormatProgram node)
+    public void inAFormatDecProgram(AFormatDecProgram node)
     {
         defaultIn(node);
     }
 
-    public void outAFormatProgram(AFormatProgram node)
+    public void outAFormatDecProgram(AFormatDecProgram node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFormatProgram(AFormatProgram node)
+    public void caseAFormatDecProgram(AFormatDecProgram node)
     {
-        inAFormatProgram(node);
+        inAFormatDecProgram(node);
         {
             List<PDeclaration> copy = new ArrayList<PDeclaration>(node.getDeclaration());
             for(PDeclaration e : copy)
@@ -105,7 +126,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
-        outAFormatProgram(node);
+        outAFormatDecProgram(node);
     }
 
     public void inAIntDeclarationDeclaration(AIntDeclarationDeclaration node)

@@ -12,8 +12,9 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
+    void caseAStart(AStart node);
     void caseAMainProgram(AMainProgram node);
-    void caseAFormatProgram(AFormatProgram node);
+    void caseAFormatDecProgram(AFormatDecProgram node);
     void caseAIntDeclarationDeclaration(AIntDeclarationDeclaration node);
     void caseAStrDeclarationDeclaration(AStrDeclarationDeclaration node);
     void caseADoubleDeclarationDeclaration(ADoubleDeclarationDeclaration node);
@@ -60,8 +61,6 @@ public interface Analysis extends Switch
     void caseAExprTerm(AExprTerm node);
 
     void caseTComment(TComment node);
-    void caseTIntLiteral(TIntLiteral node);
-    void caseTDoubleLiteral(TDoubleLiteral node);
     void caseTNumber(TNumber node);
     void caseTStringLiteral(TStringLiteral node);
     void caseTInt(TInt node);
@@ -75,25 +74,25 @@ public interface Analysis extends Switch
     void caseTLPar(TLPar node);
     void caseTRPar(TRPar node);
     void caseTSemicolon(TSemicolon node);
-    void caseTEquals(TEquals node);
     void caseTDoubleEquals(TDoubleEquals node);
     void caseTNotEquals(TNotEquals node);
-    void caseTLess(TLess node);
     void caseTLessEq(TLessEq node);
-    void caseTGreater(TGreater node);
     void caseTGreaterEq(TGreaterEq node);
+    void caseTEquals(TEquals node);
+    void caseTLess(TLess node);
+    void caseTGreater(TGreater node);
     void caseTAnd(TAnd node);
     void caseTOr(TOr node);
     void caseTIf(TIf node);
     void caseTElse(TElse node);
     void caseTLBracket(TLBracket node);
     void caseTRBracket(TRBracket node);
-    void caseTVar(TVar node);
     void caseTPrint(TPrint node);
     void caseTPrintln(TPrintln node);
     void caseTMain(TMain node);
     void caseTWhile(TWhile node);
     void caseTInput(TInput node);
+    void caseTVar(TVar node);
     void caseTBlank(TBlank node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);

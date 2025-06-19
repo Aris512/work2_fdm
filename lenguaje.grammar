@@ -10,8 +10,6 @@ Helpers
 
 Tokens
   comment = '/*' comment_char* '*/';
-  int_literal = digit+;
-  double_literal = digit+ '.' digit+;
   number = digit+ | digit+ '.' digit+;
   string_literal = '"' non_quote* '"';
   int = 'int';
@@ -25,34 +23,37 @@ Tokens
   l_par = '(';
   r_par = ')';
   semicolon = ';';
-  equals = '=';
   double_equals = '==';
   not_equals = '!=';
-  less = '<';
   less_eq = '<=';
-  greater = '>';
   greater_eq = '>=';
+  equals = '=';
+  less = '<';
+  greater = '>';
   and = '&&';
   or = '||';
   if = 'if';
   else = 'else';
   l_bracket = '{';
   r_bracket = '}';
-  var = ['a' .. 'z'] (['a' .. 'z'] | ['0' .. '9'])*;
   print = 'print';
   println = 'println';
   main = 'main';
   while = 'while';
   input = 'input';
+  var = ['a' .. 'z'] (['a' .. 'z'] | ['0' .. '9'])*;
   blank = ( ' ' | 13 | 10 )+;
 
 Ignored Tokens
   blank, comment;
 
 Productions
+  start=main_program;
+  
   main_program = main l_par r_par l_bracket program r_bracket;
 
-  program = {format} declaration* line*;
+  program = 
+    {format_dec} declaration* line*;
 
   declaration = 
     {int_declaration} int var semicolon | 

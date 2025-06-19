@@ -32,8 +32,29 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inStart(node);
         node.getEOF().apply(this);
-        node.getPMainProgram().apply(this);
+        node.getPStart().apply(this);
         outStart(node);
+    }
+
+    public void inAStart(AStart node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStart(AStart node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStart(AStart node)
+    {
+        inAStart(node);
+        if(node.getMainProgram() != null)
+        {
+            node.getMainProgram().apply(this);
+        }
+        outAStart(node);
     }
 
     public void inAMainProgram(AMainProgram node)
@@ -77,20 +98,20 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAMainProgram(node);
     }
 
-    public void inAFormatProgram(AFormatProgram node)
+    public void inAFormatDecProgram(AFormatDecProgram node)
     {
         defaultIn(node);
     }
 
-    public void outAFormatProgram(AFormatProgram node)
+    public void outAFormatDecProgram(AFormatDecProgram node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFormatProgram(AFormatProgram node)
+    public void caseAFormatDecProgram(AFormatDecProgram node)
     {
-        inAFormatProgram(node);
+        inAFormatDecProgram(node);
         {
             List<PLine> copy = new ArrayList<PLine>(node.getLine());
             Collections.reverse(copy);
@@ -107,7 +128,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
-        outAFormatProgram(node);
+        outAFormatDecProgram(node);
     }
 
     public void inAIntDeclarationDeclaration(AIntDeclarationDeclaration node)

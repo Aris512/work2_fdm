@@ -72,11 +72,6 @@ public class Interpreter extends DepthFirstAdapter {
     }
 
     @Override
-    public void caseAPrintlnStringLine(APrintlnStringLine node) {
-        System.out.println(node.getStringLiteral().getText().replace("\"", ""));
-    }
-
-    @Override
     public void caseAInputLine(AInputLine node) {
         System.out.print("Ingrese valor para " + node.getVar().getText() + ": ");
         String input = scanner.nextLine();

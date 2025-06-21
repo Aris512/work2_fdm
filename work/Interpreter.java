@@ -57,6 +57,22 @@ public class Interpreter extends DepthFirstAdapter {
     }
 
     @Override
+    public void caseAPrintlnVarLine(APrintlnVarLine node) {
+        System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
+    }
+
+    @Override
+    public void caseAPrintlnNumberLine(APrintlnNumberLine node) {
+        System.out.println(node.getNumber().getText());
+    }
+
+    @Override
+    public void caseAPrintlnStringLine(APrintlnStringLine node) {
+        System.out.println(node.getStringLiteral().getText().replace("\"", ""));
+    }
+
+
+    @Override
     public void caseAPrintVarLine(APrintVarLine node) {
         System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
     }

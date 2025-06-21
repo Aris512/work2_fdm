@@ -305,117 +305,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outADoubleDeclarationAssignmentDeclaration(node);
     }
 
-    public void inAPrintVarLine(APrintVarLine node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPrintVarLine(APrintVarLine node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPrintVarLine(APrintVarLine node)
-    {
-        inAPrintVarLine(node);
-        if(node.getSemicolon() != null)
-        {
-            node.getSemicolon().apply(this);
-        }
-        if(node.getRPar() != null)
-        {
-            node.getRPar().apply(this);
-        }
-        if(node.getVar() != null)
-        {
-            node.getVar().apply(this);
-        }
-        if(node.getLPar() != null)
-        {
-            node.getLPar().apply(this);
-        }
-        if(node.getPrint() != null)
-        {
-            node.getPrint().apply(this);
-        }
-        outAPrintVarLine(node);
-    }
-
-    public void inAPrintStringLine(APrintStringLine node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPrintStringLine(APrintStringLine node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPrintStringLine(APrintStringLine node)
-    {
-        inAPrintStringLine(node);
-        if(node.getSemicolon() != null)
-        {
-            node.getSemicolon().apply(this);
-        }
-        if(node.getRPar() != null)
-        {
-            node.getRPar().apply(this);
-        }
-        if(node.getStringLiteral() != null)
-        {
-            node.getStringLiteral().apply(this);
-        }
-        if(node.getLPar() != null)
-        {
-            node.getLPar().apply(this);
-        }
-        if(node.getPrint() != null)
-        {
-            node.getPrint().apply(this);
-        }
-        outAPrintStringLine(node);
-    }
-
-    public void inAPrintNumberLine(APrintNumberLine node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAPrintNumberLine(APrintNumberLine node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAPrintNumberLine(APrintNumberLine node)
-    {
-        inAPrintNumberLine(node);
-        if(node.getSemicolon() != null)
-        {
-            node.getSemicolon().apply(this);
-        }
-        if(node.getRPar() != null)
-        {
-            node.getRPar().apply(this);
-        }
-        if(node.getNumber() != null)
-        {
-            node.getNumber().apply(this);
-        }
-        if(node.getLPar() != null)
-        {
-            node.getLPar().apply(this);
-        }
-        if(node.getPrint() != null)
-        {
-            node.getPrint().apply(this);
-        }
-        outAPrintNumberLine(node);
-    }
-
     public void inAPrintlnVarLine(APrintlnVarLine node)
     {
         defaultIn(node);
@@ -525,6 +414,117 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getPrintln().apply(this);
         }
         outAPrintlnNumberLine(node);
+    }
+
+    public void inAPrintVarLine(APrintVarLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintVarLine(APrintVarLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintVarLine(APrintVarLine node)
+    {
+        inAPrintVarLine(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getPrint() != null)
+        {
+            node.getPrint().apply(this);
+        }
+        outAPrintVarLine(node);
+    }
+
+    public void inAPrintStringLine(APrintStringLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintStringLine(APrintStringLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintStringLine(APrintStringLine node)
+    {
+        inAPrintStringLine(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getStringLiteral() != null)
+        {
+            node.getStringLiteral().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getPrint() != null)
+        {
+            node.getPrint().apply(this);
+        }
+        outAPrintStringLine(node);
+    }
+
+    public void inAPrintNumberLine(APrintNumberLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintNumberLine(APrintNumberLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintNumberLine(APrintNumberLine node)
+    {
+        inAPrintNumberLine(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getNumber() != null)
+        {
+            node.getNumber().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getPrint() != null)
+        {
+            node.getPrint().apply(this);
+        }
+        outAPrintNumberLine(node);
     }
 
     public void inAInputLine(AInputLine node)

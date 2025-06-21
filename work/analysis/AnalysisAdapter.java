@@ -129,24 +129,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAPrintVarLine(APrintVarLine node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPrintStringLine(APrintStringLine node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPrintNumberLine(APrintNumberLine node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseAPrintlnVarLine(APrintlnVarLine node)
     {
         defaultCase(node);
@@ -160,6 +142,24 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAPrintlnNumberLine(APrintlnNumberLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintVarLine(APrintVarLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintStringLine(APrintStringLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintNumberLine(APrintNumberLine node)
     {
         defaultCase(node);
     }

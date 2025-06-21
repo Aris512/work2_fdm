@@ -270,37 +270,37 @@ public class Parser
                 push(goTo(3), list, false);
             }
             break;
-            case 12: /* reduce APrintVarLine */
+            case 12: /* reduce APrintlnVarLine */
             {
                 ArrayList<Object> list = new12();
                 push(goTo(4), list, false);
             }
             break;
-            case 13: /* reduce APrintStringLine */
+            case 13: /* reduce APrintlnStringLine */
             {
                 ArrayList<Object> list = new13();
                 push(goTo(4), list, false);
             }
             break;
-            case 14: /* reduce APrintNumberLine */
+            case 14: /* reduce APrintlnNumberLine */
             {
                 ArrayList<Object> list = new14();
                 push(goTo(4), list, false);
             }
             break;
-            case 15: /* reduce APrintlnVarLine */
+            case 15: /* reduce APrintVarLine */
             {
                 ArrayList<Object> list = new15();
                 push(goTo(4), list, false);
             }
             break;
-            case 16: /* reduce APrintlnStringLine */
+            case 16: /* reduce APrintStringLine */
             {
                 ArrayList<Object> list = new16();
                 push(goTo(4), list, false);
             }
             break;
-            case 17: /* reduce APrintlnNumberLine */
+            case 17: /* reduce APrintNumberLine */
             {
                 ArrayList<Object> list = new17();
                 push(goTo(4), list, false);
@@ -909,103 +909,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new12() /* reduce APrintVarLine */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PLine plineNode1;
-        {
-            // Block
-        TPrint tprintNode2;
-        TLPar tlparNode3;
-        TVar tvarNode4;
-        TRPar trparNode5;
-        TSemicolon tsemicolonNode6;
-        tprintNode2 = (TPrint)nodeArrayList1.get(0);
-        tlparNode3 = (TLPar)nodeArrayList2.get(0);
-        tvarNode4 = (TVar)nodeArrayList3.get(0);
-        trparNode5 = (TRPar)nodeArrayList4.get(0);
-        tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
-
-        plineNode1 = new APrintVarLine(tprintNode2, tlparNode3, tvarNode4, trparNode5, tsemicolonNode6);
-        }
-	nodeList.add(plineNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new13() /* reduce APrintStringLine */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PLine plineNode1;
-        {
-            // Block
-        TPrint tprintNode2;
-        TLPar tlparNode3;
-        TStringLiteral tstringliteralNode4;
-        TRPar trparNode5;
-        TSemicolon tsemicolonNode6;
-        tprintNode2 = (TPrint)nodeArrayList1.get(0);
-        tlparNode3 = (TLPar)nodeArrayList2.get(0);
-        tstringliteralNode4 = (TStringLiteral)nodeArrayList3.get(0);
-        trparNode5 = (TRPar)nodeArrayList4.get(0);
-        tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
-
-        plineNode1 = new APrintStringLine(tprintNode2, tlparNode3, tstringliteralNode4, trparNode5, tsemicolonNode6);
-        }
-	nodeList.add(plineNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new14() /* reduce APrintNumberLine */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PLine plineNode1;
-        {
-            // Block
-        TPrint tprintNode2;
-        TLPar tlparNode3;
-        TNumber tnumberNode4;
-        TRPar trparNode5;
-        TSemicolon tsemicolonNode6;
-        tprintNode2 = (TPrint)nodeArrayList1.get(0);
-        tlparNode3 = (TLPar)nodeArrayList2.get(0);
-        tnumberNode4 = (TNumber)nodeArrayList3.get(0);
-        trparNode5 = (TRPar)nodeArrayList4.get(0);
-        tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
-
-        plineNode1 = new APrintNumberLine(tprintNode2, tlparNode3, tnumberNode4, trparNode5, tsemicolonNode6);
-        }
-	nodeList.add(plineNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new15() /* reduce APrintlnVarLine */
+    ArrayList<Object> new12() /* reduce APrintlnVarLine */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -1037,7 +941,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new16() /* reduce APrintlnStringLine */
+    ArrayList<Object> new13() /* reduce APrintlnStringLine */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -1069,7 +973,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new17() /* reduce APrintlnNumberLine */
+    ArrayList<Object> new14() /* reduce APrintlnNumberLine */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -1093,6 +997,102 @@ public class Parser
         tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
 
         plineNode1 = new APrintlnNumberLine(tprintlnNode2, tlparNode3, tnumberNode4, trparNode5, tsemicolonNode6);
+        }
+	nodeList.add(plineNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new15() /* reduce APrintVarLine */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PLine plineNode1;
+        {
+            // Block
+        TPrint tprintNode2;
+        TLPar tlparNode3;
+        TVar tvarNode4;
+        TRPar trparNode5;
+        TSemicolon tsemicolonNode6;
+        tprintNode2 = (TPrint)nodeArrayList1.get(0);
+        tlparNode3 = (TLPar)nodeArrayList2.get(0);
+        tvarNode4 = (TVar)nodeArrayList3.get(0);
+        trparNode5 = (TRPar)nodeArrayList4.get(0);
+        tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
+
+        plineNode1 = new APrintVarLine(tprintNode2, tlparNode3, tvarNode4, trparNode5, tsemicolonNode6);
+        }
+	nodeList.add(plineNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new16() /* reduce APrintStringLine */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PLine plineNode1;
+        {
+            // Block
+        TPrint tprintNode2;
+        TLPar tlparNode3;
+        TStringLiteral tstringliteralNode4;
+        TRPar trparNode5;
+        TSemicolon tsemicolonNode6;
+        tprintNode2 = (TPrint)nodeArrayList1.get(0);
+        tlparNode3 = (TLPar)nodeArrayList2.get(0);
+        tstringliteralNode4 = (TStringLiteral)nodeArrayList3.get(0);
+        trparNode5 = (TRPar)nodeArrayList4.get(0);
+        tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
+
+        plineNode1 = new APrintStringLine(tprintNode2, tlparNode3, tstringliteralNode4, trparNode5, tsemicolonNode6);
+        }
+	nodeList.add(plineNode1);
+        return nodeList;
+    }
+
+
+
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    ArrayList<Object> new17() /* reduce APrintNumberLine */
+    {
+        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
+
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
+        PLine plineNode1;
+        {
+            // Block
+        TPrint tprintNode2;
+        TLPar tlparNode3;
+        TNumber tnumberNode4;
+        TRPar trparNode5;
+        TSemicolon tsemicolonNode6;
+        tprintNode2 = (TPrint)nodeArrayList1.get(0);
+        tlparNode3 = (TLPar)nodeArrayList2.get(0);
+        tnumberNode4 = (TNumber)nodeArrayList3.get(0);
+        trparNode5 = (TRPar)nodeArrayList4.get(0);
+        tsemicolonNode6 = (TSemicolon)nodeArrayList5.get(0);
+
+        plineNode1 = new APrintNumberLine(tprintNode2, tlparNode3, tnumberNode4, trparNode5, tsemicolonNode6);
         }
 	nodeList.add(plineNode1);
         return nodeList;
@@ -2374,12 +2374,12 @@ public class Parser
 			{{-1, REDUCE, 35}, },
 			{{-1, REDUCE, 36}, },
 			{{-1, REDUCE, 34}, },
-			{{-1, REDUCE, 14}, },
-			{{-1, REDUCE, 13}, },
-			{{-1, REDUCE, 12}, },
 			{{-1, REDUCE, 17}, },
 			{{-1, REDUCE, 16}, },
 			{{-1, REDUCE, 15}, },
+			{{-1, REDUCE, 14}, },
+			{{-1, REDUCE, 13}, },
+			{{-1, REDUCE, 12}, },
 			{{-1, ERROR, 111}, {22, SHIFT, 10}, {25, SHIFT, 121}, {26, SHIFT, 11}, {27, SHIFT, 12}, {29, SHIFT, 13}, {30, SHIFT, 14}, {31, SHIFT, 15}, },
 			{{-1, REDUCE, 18}, },
 			{{-1, REDUCE, 56}, },

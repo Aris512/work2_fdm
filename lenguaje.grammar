@@ -64,12 +64,12 @@ Productions
     {double_declaration_assignment} double assignment semicolon;
 
   line = 
-    {print_var} print l_par var r_par semicolon | 
-    {print_string} print l_par string_literal r_par semicolon |
-    {print_number} print l_par number r_par semicolon |
     {println_var} println l_par var r_par semicolon |
     {println_string} println l_par string_literal r_par semicolon |
     {println_number} println l_par number r_par semicolon |
+    {print_var} print l_par var r_par semicolon | 
+    {print_string} print l_par string_literal r_par semicolon |
+    {print_number} print l_par number r_par semicolon |
     {input} input l_par var r_par semicolon |
     {flow_control} flow_control |
     {assignment} assignment semicolon;

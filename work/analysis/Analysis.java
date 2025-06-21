@@ -21,12 +21,12 @@ public interface Analysis extends Switch
     void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node);
     void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node);
     void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node);
-    void caseAPrintVarLine(APrintVarLine node);
-    void caseAPrintStringLine(APrintStringLine node);
-    void caseAPrintNumberLine(APrintNumberLine node);
     void caseAPrintlnVarLine(APrintlnVarLine node);
     void caseAPrintlnStringLine(APrintlnStringLine node);
     void caseAPrintlnNumberLine(APrintlnNumberLine node);
+    void caseAPrintVarLine(APrintVarLine node);
+    void caseAPrintStringLine(APrintStringLine node);
+    void caseAPrintNumberLine(APrintNumberLine node);
     void caseAInputLine(AInputLine node);
     void caseAFlowControlLine(AFlowControlLine node);
     void caseAAssignmentLine(AAssignmentLine node);

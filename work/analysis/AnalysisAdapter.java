@@ -171,6 +171,18 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAIncrementLine(AIncrementLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADecrementLine(ADecrementLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAFlowControlLine(AFlowControlLine node)
     {
         defaultCase(node);
@@ -436,6 +448,18 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTMod(TMod node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTInc(TInc node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTDec(TDec node)
     {
         defaultCase(node);
     }

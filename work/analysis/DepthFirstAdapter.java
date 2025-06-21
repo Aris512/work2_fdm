@@ -562,6 +562,64 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAInputLine(node);
     }
 
+    public void inAIncrementLine(AIncrementLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIncrementLine(AIncrementLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIncrementLine(AIncrementLine node)
+    {
+        inAIncrementLine(node);
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getInc() != null)
+        {
+            node.getInc().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAIncrementLine(node);
+    }
+
+    public void inADecrementLine(ADecrementLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADecrementLine(ADecrementLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADecrementLine(ADecrementLine node)
+    {
+        inADecrementLine(node);
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getDec() != null)
+        {
+            node.getDec().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outADecrementLine(node);
+    }
+
     public void inAFlowControlLine(AFlowControlLine node)
     {
         defaultIn(node);

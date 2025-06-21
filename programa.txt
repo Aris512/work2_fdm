@@ -1,4 +1,9 @@
 main() {
-  string a="hola mundo";
-  println(a);
+ int i=10;
+ while(i>0){
+  print("El valor de i es: ");
+  print(i);
+  println("");
+  i--;
+ }
 }

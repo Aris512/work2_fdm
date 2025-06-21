@@ -28,6 +28,8 @@ public interface Analysis extends Switch
     void caseAPrintStringLine(APrintStringLine node);
     void caseAPrintNumberLine(APrintNumberLine node);
     void caseAInputLine(AInputLine node);
+    void caseAIncrementLine(AIncrementLine node);
+    void caseADecrementLine(ADecrementLine node);
     void caseAFlowControlLine(AFlowControlLine node);
     void caseAAssignmentLine(AAssignmentLine node);
     void caseAIfFlowControl(AIfFlowControl node);
@@ -74,6 +76,8 @@ public interface Analysis extends Switch
     void caseTMult(TMult node);
     void caseTDiv(TDiv node);
     void caseTMod(TMod node);
+    void caseTInc(TInc node);
+    void caseTDec(TDec node);
     void caseTLPar(TLPar node);
     void caseTRPar(TRPar node);
     void caseTSemicolon(TSemicolon node);

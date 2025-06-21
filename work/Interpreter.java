@@ -56,7 +56,7 @@ public class Interpreter extends DepthFirstAdapter {
         variables.put(varName, value);
     }
 
-    @Override
+      @Override
     public void caseAPrintlnVarLine(APrintlnVarLine node) {
         System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
     }
@@ -272,5 +272,37 @@ public class Interpreter extends DepthFirstAdapter {
             return toDouble(evalExpr(((AExprTerm) term).getExpr()));
         }
         return 0;
+    }
+
+    @Override
+    public void caseAIncrementLine(AIncrementLine node) {
+        String varName = node.getVar().getText();
+        Object value = variables.getOrDefault(varName, 0);
+        if (value instanceof Number) {
+            variables.put(varName, ((Number) value).doubleValue() + 1);
+        } else {
+            try {
+                double v = Double.parseDouble(value.toString());
+                variables.put(varName, v + 1);
+            } catch (Exception e) {
+                variables.put(varName, 1);
+            }
+        }
+    }
+
+    @Override
+    public void caseADecrementLine(ADecrementLine node) {
+        String varName = node.getVar().getText();
+        Object value = variables.getOrDefault(varName, 0);
+        if (value instanceof Number) {
+            variables.put(varName, ((Number) value).doubleValue() - 1);
+        } else {
+            try {
+                double v = Double.parseDouble(value.toString());
+                variables.put(varName, v - 1);
+            } catch (Exception e) {
+                variables.put(varName, -1);
+            }
+        }
     }
 }

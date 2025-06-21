@@ -20,6 +20,8 @@ Tokens
   mult = '*';
   div = '/';
   mod = '%';
+  inc = '++';
+  dec = '--';
   l_par = '(';
   r_par = ')';
   semicolon = ';';
@@ -71,6 +73,8 @@ Productions
     {print_string} print l_par string_literal r_par semicolon |
     {print_number} print l_par number r_par semicolon |
     {input} input l_par var r_par semicolon |
+    {increment} var inc semicolon |
+    {decrement} var dec semicolon |
     {flow_control} flow_control |
     {assignment} assignment semicolon;
 

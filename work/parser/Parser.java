@@ -240,7 +240,7 @@ public class Parser
                 push(goTo(3), list, false);
             }
             break;
-            case 7: /* reduce AStrDeclarationDeclaration */
+            case 7: /* reduce AStringDeclarationDeclaration */
             {
                 ArrayList<Object> list = new7();
                 push(goTo(3), list, false);
@@ -258,7 +258,7 @@ public class Parser
                 push(goTo(3), list, false);
             }
             break;
-            case 10: /* reduce AStrDeclarationAssignmentDeclaration */
+            case 10: /* reduce AStringDeclarationAssignmentDeclaration */
             {
                 ArrayList<Object> list = new10();
                 push(goTo(3), list, false);
@@ -372,7 +372,7 @@ public class Parser
                 push(goTo(7), list, false);
             }
             break;
-            case 29: /* reduce AEqualsSecondCondition */
+            case 29: /* reduce ADoubleEqualsSecondCondition */
             {
                 ArrayList<Object> list = new29();
                 push(goTo(8), list, false);
@@ -761,7 +761,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new7() /* reduce AStrDeclarationDeclaration */
+    ArrayList<Object> new7() /* reduce AStringDeclarationDeclaration */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -771,14 +771,14 @@ public class Parser
         PDeclaration pdeclarationNode1;
         {
             // Block
-        TStr tstrNode2;
+        TString tstringNode2;
         TVar tvarNode3;
         TSemicolon tsemicolonNode4;
-        tstrNode2 = (TStr)nodeArrayList1.get(0);
+        tstringNode2 = (TString)nodeArrayList1.get(0);
         tvarNode3 = (TVar)nodeArrayList2.get(0);
         tsemicolonNode4 = (TSemicolon)nodeArrayList3.get(0);
 
-        pdeclarationNode1 = new AStrDeclarationDeclaration(tstrNode2, tvarNode3, tsemicolonNode4);
+        pdeclarationNode1 = new AStringDeclarationDeclaration(tstringNode2, tvarNode3, tsemicolonNode4);
         }
 	nodeList.add(pdeclarationNode1);
         return nodeList;
@@ -839,7 +839,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new10() /* reduce AStrDeclarationAssignmentDeclaration */
+    ArrayList<Object> new10() /* reduce AStringDeclarationAssignmentDeclaration */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -849,14 +849,14 @@ public class Parser
         PDeclaration pdeclarationNode1;
         {
             // Block
-        TStr tstrNode2;
+        TString tstringNode2;
         PAssignment passignmentNode3;
         TSemicolon tsemicolonNode4;
-        tstrNode2 = (TStr)nodeArrayList1.get(0);
+        tstringNode2 = (TString)nodeArrayList1.get(0);
         passignmentNode3 = (PAssignment)nodeArrayList2.get(0);
         tsemicolonNode4 = (TSemicolon)nodeArrayList3.get(0);
 
-        pdeclarationNode1 = new AStrDeclarationAssignmentDeclaration(tstrNode2, passignmentNode3, tsemicolonNode4);
+        pdeclarationNode1 = new AStringDeclarationAssignmentDeclaration(tstringNode2, passignmentNode3, tsemicolonNode4);
         }
 	nodeList.add(pdeclarationNode1);
         return nodeList;
@@ -1462,7 +1462,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new29() /* reduce AEqualsSecondCondition */
+    ArrayList<Object> new29() /* reduce ADoubleEqualsSecondCondition */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -1473,13 +1473,13 @@ public class Parser
         {
             // Block
         PItem1 pitem1Node2;
-        TEquals tequalsNode3;
+        TDoubleEquals tdoubleequalsNode3;
         PItem2 pitem2Node4;
         pitem1Node2 = (PItem1)nodeArrayList1.get(0);
-        tequalsNode3 = (TEquals)nodeArrayList2.get(0);
+        tdoubleequalsNode3 = (TDoubleEquals)nodeArrayList2.get(0);
         pitem2Node4 = (PItem2)nodeArrayList3.get(0);
 
-        psecondconditionNode1 = new AEqualsSecondCondition(pitem1Node2, tequalsNode3, pitem2Node4);
+        psecondconditionNode1 = new ADoubleEqualsSecondCondition(pitem1Node2, tdoubleequalsNode3, pitem2Node4);
         }
 	nodeList.add(psecondconditionNode1);
         return nodeList;
@@ -2205,7 +2205,7 @@ public class Parser
 			{{-1, REDUCE, 36}, },
 			{{-1, ERROR, 48}, {11, SHIFT, 64}, {20, SHIFT, 65}, {21, SHIFT, 66}, },
 			{{-1, REDUCE, 26}, },
-			{{-1, ERROR, 50}, {14, SHIFT, 67}, {15, SHIFT, 68}, {16, SHIFT, 69}, {17, SHIFT, 70}, {18, SHIFT, 71}, {19, SHIFT, 72}, },
+			{{-1, ERROR, 50}, {13, SHIFT, 67}, {14, SHIFT, 68}, {15, SHIFT, 69}, {16, SHIFT, 70}, {18, SHIFT, 71}, {19, SHIFT, 72}, },
 			{{-1, ERROR, 51}, {11, SHIFT, 73}, },
 			{{-1, ERROR, 52}, {11, SHIFT, 74}, },
 			{{-1, ERROR, 53}, {11, SHIFT, 75}, },
@@ -2246,10 +2246,10 @@ public class Parser
 			{{-1, REDUCE, 40}, },
 			{{-1, REDUCE, 41}, },
 			{{-1, REDUCE, 39}, },
+			{{-1, REDUCE, 29}, },
 			{{-1, REDUCE, 30}, },
 			{{-1, REDUCE, 34}, },
 			{{-1, REDUCE, 32}, },
-			{{-1, REDUCE, 29}, },
 			{{-1, REDUCE, 33}, },
 			{{-1, REDUCE, 31}, },
 			{{-1, REDUCE, 14}, },
@@ -2304,7 +2304,7 @@ public class Parser
 			"expecting: EOF",
 			"expecting: ')'",
 			"expecting: '{'",
-			"expecting: 'int', 'double', 'str', 'if', '}', 'print', 'while', 'input', var",
+			"expecting: 'int', 'double', 'string', 'if', '}', 'print', 'while', 'input', var",
 			"expecting: var",
 			"expecting: '='",
 			"expecting: '}'",
@@ -2313,7 +2313,7 @@ public class Parser
 			"expecting: ';', '='",
 			"expecting: number, string literal, '(', var",
 			"expecting: number, string literal, var",
-			"expecting: '!=', '<=', '>=', '=', '<', '>'",
+			"expecting: '==', '!=', '<=', '>=', '<', '>'",
 			"expecting: ')', '&&', '||'",
 			"expecting: '+', '-', '*', '/', '%', ')', ';'",
 			"expecting: number, '(', var",

@@ -99,7 +99,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAStrDeclarationDeclaration(AStrDeclarationDeclaration node)
+    public void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node)
     {
         defaultCase(node);
     }
@@ -117,7 +117,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAStrDeclarationAssignmentDeclaration(AStrDeclarationAssignmentDeclaration node)
+    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
     {
         defaultCase(node);
     }
@@ -207,7 +207,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAEqualsSecondCondition(AEqualsSecondCondition node)
+    public void caseADoubleEqualsSecondCondition(ADoubleEqualsSecondCondition node)
     {
         defaultCase(node);
     }
@@ -387,7 +387,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTStr(TStr node)
+    public void caseTString(TString node)
     {
         defaultCase(node);
     }

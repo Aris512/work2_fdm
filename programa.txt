@@ -1,9 +1,4 @@
 main() {
-  string =a;
-  a ="hola";
-  if(a="hola"){
-    print("true");
-  }else{
-    print("false");
-  }
+  string a="hola";
+  print("a");
 }

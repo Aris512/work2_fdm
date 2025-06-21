@@ -14,7 +14,7 @@ Tokens
   string_literal = '"' non_quote* '"';
   int = 'int';
   double = 'double';
-  str = 'str';
+  string = 'string';
   plus = '+';
   minus = '-';
   mult = '*';
@@ -57,10 +57,10 @@ Productions
 
   declaration = 
     {int_declaration} int var semicolon | 
-    {str_declaration} str var semicolon | 
+    {string_declaration} string var semicolon | 
     {double_declaration} double var semicolon | 
     {int_declaration_assignment} int assignment semicolon | 
-    {str_declaration_assignment} str assignment semicolon | 
+    {string_declaration_assignment} string assignment semicolon | 
     {double_declaration_assignment} double assignment semicolon;
 
   line = 
@@ -84,7 +84,7 @@ Productions
     {or} condition or second_condition;
 
   second_condition = 
-    {equals} item1 equals item2 |
+    {double_equals} item1 double_equals item2 |
     {not_equals} item1 not_equals item2 |
     {greater} item1 greater item2 |
     {greater_eq} item1 greater_eq item2 |

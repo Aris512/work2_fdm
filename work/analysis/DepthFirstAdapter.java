@@ -158,23 +158,23 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAIntDeclarationDeclaration(node);
     }
 
-    public void inAStrDeclarationDeclaration(AStrDeclarationDeclaration node)
+    public void inAStringDeclarationDeclaration(AStringDeclarationDeclaration node)
     {
         defaultIn(node);
     }
 
-    public void outAStrDeclarationDeclaration(AStrDeclarationDeclaration node)
+    public void outAStringDeclarationDeclaration(AStringDeclarationDeclaration node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAStrDeclarationDeclaration(AStrDeclarationDeclaration node)
+    public void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node)
     {
-        inAStrDeclarationDeclaration(node);
-        if(node.getStr() != null)
+        inAStringDeclarationDeclaration(node);
+        if(node.getString() != null)
         {
-            node.getStr().apply(this);
+            node.getString().apply(this);
         }
         if(node.getVar() != null)
         {
@@ -184,7 +184,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getSemicolon().apply(this);
         }
-        outAStrDeclarationDeclaration(node);
+        outAStringDeclarationDeclaration(node);
     }
 
     public void inADoubleDeclarationDeclaration(ADoubleDeclarationDeclaration node)
@@ -245,23 +245,23 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAIntDeclarationAssignmentDeclaration(node);
     }
 
-    public void inAStrDeclarationAssignmentDeclaration(AStrDeclarationAssignmentDeclaration node)
+    public void inAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
     {
         defaultIn(node);
     }
 
-    public void outAStrDeclarationAssignmentDeclaration(AStrDeclarationAssignmentDeclaration node)
+    public void outAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAStrDeclarationAssignmentDeclaration(AStrDeclarationAssignmentDeclaration node)
+    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
     {
-        inAStrDeclarationAssignmentDeclaration(node);
-        if(node.getStr() != null)
+        inAStringDeclarationAssignmentDeclaration(node);
+        if(node.getString() != null)
         {
-            node.getStr().apply(this);
+            node.getString().apply(this);
         }
         if(node.getAssignment() != null)
         {
@@ -271,7 +271,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getSemicolon().apply(this);
         }
-        outAStrDeclarationAssignmentDeclaration(node);
+        outAStringDeclarationAssignmentDeclaration(node);
     }
 
     public void inADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
@@ -760,33 +760,33 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAOrCondition(node);
     }
 
-    public void inAEqualsSecondCondition(AEqualsSecondCondition node)
+    public void inADoubleEqualsSecondCondition(ADoubleEqualsSecondCondition node)
     {
         defaultIn(node);
     }
 
-    public void outAEqualsSecondCondition(AEqualsSecondCondition node)
+    public void outADoubleEqualsSecondCondition(ADoubleEqualsSecondCondition node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAEqualsSecondCondition(AEqualsSecondCondition node)
+    public void caseADoubleEqualsSecondCondition(ADoubleEqualsSecondCondition node)
     {
-        inAEqualsSecondCondition(node);
+        inADoubleEqualsSecondCondition(node);
         if(node.getItem1() != null)
         {
             node.getItem1().apply(this);
         }
-        if(node.getEquals() != null)
+        if(node.getDoubleEquals() != null)
         {
-            node.getEquals().apply(this);
+            node.getDoubleEquals().apply(this);
         }
         if(node.getItem2() != null)
         {
             node.getItem2().apply(this);
         }
-        outAEqualsSecondCondition(node);
+        outADoubleEqualsSecondCondition(node);
     }
 
     public void inANotEqualsSecondCondition(ANotEqualsSecondCondition node)

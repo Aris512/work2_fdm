@@ -441,6 +441,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTEquals(TEquals node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTDoubleEquals(TDoubleEquals node)
     {
         defaultCase(node);
@@ -460,12 +466,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTGreaterEq(TGreaterEq node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTEquals(TEquals node)
     {
         defaultCase(node);
     }

@@ -24,6 +24,9 @@ public interface Analysis extends Switch
     void caseAPrintVarLine(APrintVarLine node);
     void caseAPrintStringLine(APrintStringLine node);
     void caseAPrintNumberLine(APrintNumberLine node);
+    void caseAPrintlnVarLine(APrintlnVarLine node);
+    void caseAPrintlnStringLine(APrintlnStringLine node);
+    void caseAPrintlnNumberLine(APrintlnNumberLine node);
     void caseAInputLine(AInputLine node);
     void caseAFlowControlLine(AFlowControlLine node);
     void caseAAssignmentLine(AAssignmentLine node);

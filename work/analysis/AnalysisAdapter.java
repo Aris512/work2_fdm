@@ -147,6 +147,24 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAPrintlnVarLine(APrintlnVarLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintlnStringLine(APrintlnStringLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrintlnNumberLine(APrintlnNumberLine node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAInputLine(AInputLine node)
     {
         defaultCase(node);

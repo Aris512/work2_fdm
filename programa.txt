@@ -1,13 +1,4 @@
 main() {
-  int x=5;
-  int y=2;
-  string f="false";
-  string v="true";
-  string t="testeo";
-  if(y==x){
-    print(v);
-  }else{
-    print(f);
-  }
-  print(t);
+  string a="hola mundo";
+  println(a);
 }

@@ -414,6 +414,117 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAPrintNumberLine(node);
     }
 
+    public void inAPrintlnVarLine(APrintlnVarLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintlnVarLine(APrintlnVarLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintlnVarLine(APrintlnVarLine node)
+    {
+        inAPrintlnVarLine(node);
+        if(node.getPrintln() != null)
+        {
+            node.getPrintln().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAPrintlnVarLine(node);
+    }
+
+    public void inAPrintlnStringLine(APrintlnStringLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintlnStringLine(APrintlnStringLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintlnStringLine(APrintlnStringLine node)
+    {
+        inAPrintlnStringLine(node);
+        if(node.getPrintln() != null)
+        {
+            node.getPrintln().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getStringLiteral() != null)
+        {
+            node.getStringLiteral().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAPrintlnStringLine(node);
+    }
+
+    public void inAPrintlnNumberLine(APrintlnNumberLine node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAPrintlnNumberLine(APrintlnNumberLine node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAPrintlnNumberLine(APrintlnNumberLine node)
+    {
+        inAPrintlnNumberLine(node);
+        if(node.getPrintln() != null)
+        {
+            node.getPrintln().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getNumber() != null)
+        {
+            node.getNumber().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAPrintlnNumberLine(node);
+    }
+
     public void inAInputLine(AInputLine node)
     {
         defaultIn(node);

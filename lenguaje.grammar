@@ -23,8 +23,8 @@ Tokens
   l_par = '(';
   r_par = ')';
   semicolon = ';';
-  equals = '=';
   double_equals = '==';
+  equals = '=';
   not_equals = '!=';
   less_eq = '<=';
   greater_eq = '>=';

@@ -74,8 +74,8 @@ public interface Analysis extends Switch
     void caseTLPar(TLPar node);
     void caseTRPar(TRPar node);
     void caseTSemicolon(TSemicolon node);
-    void caseTEquals(TEquals node);
     void caseTDoubleEquals(TDoubleEquals node);
+    void caseTEquals(TEquals node);
     void caseTNotEquals(TNotEquals node);
     void caseTLessEq(TLessEq node);
     void caseTGreaterEq(TGreaterEq node);

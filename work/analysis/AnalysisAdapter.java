@@ -441,13 +441,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTEquals(TEquals node)
+    public void caseTDoubleEquals(TDoubleEquals node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTDoubleEquals(TDoubleEquals node)
+    public void caseTEquals(TEquals node)
     {
         defaultCase(node);
     }

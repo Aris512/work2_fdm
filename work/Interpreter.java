@@ -23,7 +23,7 @@ public class Interpreter extends DepthFirstAdapter {
     }
 
     @Override
-    public void caseAStrDeclarationDeclaration(AStrDeclarationDeclaration node) {
+    public void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node) {
         variables.put(node.getVar().getText(), "");
     }
 
@@ -38,7 +38,7 @@ public class Interpreter extends DepthFirstAdapter {
     }
 
     @Override
-    public void caseAStrDeclarationAssignmentDeclaration(AStrDeclarationAssignmentDeclaration node) {
+    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node) {
         node.getAssignment().apply(this);
     }
 
@@ -136,8 +136,8 @@ public class Interpreter extends DepthFirstAdapter {
     }
 
     private boolean evalSecondCondition(PSecondCondition cond) {
-        if (cond instanceof AEqualsSecondCondition) {
-            AEqualsSecondCondition eq = (AEqualsSecondCondition) cond;
+        if (cond instanceof ADoubleEqualsSecondCondition) {
+            ADoubleEqualsSecondCondition eq = (ADoubleEqualsSecondCondition) cond;
             Object left = getItemValue(eq.getItem1());
             Object right = getItemValue(eq.getItem2());
             return left.equals(right);
@@ -169,6 +169,16 @@ public class Interpreter extends DepthFirstAdapter {
         } else if (cond instanceof AGroupedSecondCondition) {
             AGroupedSecondCondition group = (AGroupedSecondCondition) cond;
             return evalCondition(group.getCondition());
+        } else if (cond instanceof ADoubleEqualsSecondCondition) {
+            ADoubleEqualsSecondCondition eq = (ADoubleEqualsSecondCondition) cond;
+            Object left = getItemValue(eq.getItem1());
+            Object right = getItemValue(eq.getItem2());
+            return left.equals(right);
+        } else if (cond instanceof ANotEqualsSecondCondition) {
+            ANotEqualsSecondCondition neq = (ANotEqualsSecondCondition) cond;
+            Object left = getItemValue(neq.getItem1());
+            Object right = getItemValue(neq.getItem2());
+            return !left.equals(right);
         }
 
         throw new RuntimeException("Unknown condition type: " + cond.getClass().getSimpleName());

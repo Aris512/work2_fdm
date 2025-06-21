@@ -554,8 +554,8 @@ public class Lexer
     Token new11(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TLPar(line, pos); }
     Token new12(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TRPar(line, pos); }
     Token new13(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TSemicolon(line, pos); }
-    Token new14(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TEquals(line, pos); }
-    Token new15(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TDoubleEquals(line, pos); }
+    Token new14(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TDoubleEquals(line, pos); }
+    Token new15(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TEquals(line, pos); }
     Token new16(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TNotEquals(line, pos); }
     Token new17(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TLessEq(line, pos); }
     Token new18(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TGreaterEq(line, pos); }
@@ -718,7 +718,7 @@ public class Lexer
     private static int[][] accept;
 /*  {
         // INITIAL
-        {-1, 33, 33, 33, -1, -1, 10, -1, 11, 12, 8, 6, 7, 9, 1, 13, 19, 14, 20, 32, 32, 32, 32, 32, 32, 32, 32, 25, -1, 26, 16, -1, 2, 21, -1, -1, 17, 15, 18, 32, 32, 32, 32, 23, 32, 32, 32, 32, 32, 22, -1, -1, 1, 32, 32, 32, 3, 32, 32, 32, 32, -1, 0, 32, 24, 32, 29, 32, 32, 32, 32, 31, 27, 32, 30, 4, 32, 5, 28, },
+        {-1, 33, 33, 33, -1, -1, 10, -1, 11, 12, 8, 6, 7, 9, 1, 13, 19, 15, 20, 32, 32, 32, 32, 32, 32, 32, 32, 25, -1, 26, 16, -1, 2, 21, -1, -1, 17, 14, 18, 32, 32, 32, 32, 23, 32, 32, 32, 32, 32, 22, -1, -1, 1, 32, 32, 32, 3, 32, 32, 32, 32, -1, 0, 32, 24, 32, 29, 32, 32, 32, 32, 31, 27, 32, 30, 4, 32, 5, 28, },
 
     };*/
 

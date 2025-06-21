@@ -88,13 +88,13 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTEquals(@SuppressWarnings("unused") TEquals node)
+    public void caseTDoubleEquals(@SuppressWarnings("unused") TDoubleEquals node)
     {
         this.index = 13;
     }
 
     @Override
-    public void caseTDoubleEquals(@SuppressWarnings("unused") TDoubleEquals node)
+    public void caseTEquals(@SuppressWarnings("unused") TEquals node)
     {
         this.index = 14;
     }

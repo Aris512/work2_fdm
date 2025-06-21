@@ -68,7 +68,7 @@ public final class AIfElseFlowControl extends PFlowControl
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAIfElse(this);
+        ((Analysis) sw).caseAIfElseFlowControl(this);
     }
 
     public TIf getIf()

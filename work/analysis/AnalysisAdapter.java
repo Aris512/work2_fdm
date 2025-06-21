@@ -93,121 +93,121 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void casoAIntDeclaracion(AIntDeclarationDeclaration node)
+    public void caseAIntDeclarationDeclaration(AIntDeclarationDeclaration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAStringDeclaracion(AStringDeclarationDeclaration node)
+    public void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoADoubleDeclaracion(ADoubleDeclarationDeclaration node)
+    public void caseADoubleDeclarationDeclaration(ADoubleDeclarationDeclaration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAIntAsignar(AIntDeclarationAssignmentDeclaration node)
+    public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAStringAsignar(AStringDeclarationAssignmentDeclaration node)
+    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoADoubleAsignar(ADoubleDeclarationAssignmentDeclaration node)
+    public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAPrintlnVariable(APrintlnVarLine node)
+    public void caseAPrintlnVarLine(APrintlnVarLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAPrintlnString(APrintlnStringLine node)
+    public void caseAPrintlnStringLine(APrintlnStringLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAPrintlnNumero(APrintlnNumberLine node)
+    public void caseAPrintlnNumberLine(APrintlnNumberLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAPrintVariable(APrintVarLine node)
+    public void caseAPrintVarLine(APrintVarLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAPrintString(APrintStringLine node)
+    public void caseAPrintStringLine(APrintStringLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAPrintNumero(APrintNumberLine node)
+    public void caseAPrintNumberLine(APrintNumberLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAEntrada(AInputLine node)
+    public void caseAInputLine(AInputLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAIncrementar(AIncrementLine node)
+    public void caseAIncrementLine(AIncrementLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoADecrementar(ADecrementLine node)
+    public void caseADecrementLine(ADecrementLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAControlFlujo(AFlowControlLine node)
+    public void caseAFlowControlLine(AFlowControlLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoALineaAsignacion(AAssignmentLine node)
+    public void caseAAssignmentLine(AAssignmentLine node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAIf(AIfFlowControl node)
+    public void caseAIfFlowControl(AIfFlowControl node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAIfElse(AIfElseFlowControl node)
+    public void caseAIfElseFlowControl(AIfElseFlowControl node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAWhile(AWhileFlowControl node)
+    public void caseAWhileFlowControl(AWhileFlowControl node)
     {
         defaultCase(node);
     }
@@ -315,13 +315,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void casoAStringCadenaAsignar(AStrAssignmentAssignment node)
+    public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void casoAExpresionAsignar(AExprAssignmentAssignment node)
+    public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node)
     {
         defaultCase(node);
     }

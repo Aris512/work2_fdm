@@ -14,44 +14,44 @@ public class Interpreter extends DepthFirstAdapter {
 
     //declara una variable int e inicia en 0.
     @Override
-    public void casoAIntDeclaracion(AIntDeclarationDeclaration node) {
+    public void caseAIntDeclarationDeclaration(AIntDeclarationDeclaration node) {
         variables.put(node.getVar().getText(), 0);
     }
-    
+
     //declara una variable double e inicia en 0.0.
     @Override
-    public void casoADoubleDeclaracion(ADoubleDeclarationDeclaration node) {
+    public void caseADoubleDeclarationDeclaration(ADoubleDeclarationDeclaration node) {
         variables.put(node.getVar().getText(), 0.0);
     }
 
     //declara una variable string e inicia en "".
     @Override
-    public void casoAStringDeclaracion(AStringDeclarationDeclaration node) {
+    public void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node) {
         variables.put(node.getVar().getText(), "");
     }
 
     // ======= Declaraciones y asignaciones =======
     //declara una variable int y la asigna a un valor.
     @Override
-    public void casoAIntAsignar(AIntDeclarationAssignmentDeclaration node) {
+    public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node) {
         node.getAssignment().apply(this);
     }
 
     //declara una variable double y la asigna a un valor.
     @Override
-    public void casoADoubleAsignar(ADoubleDeclarationAssignmentDeclaration node) {
+    public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node) {
         node.getAssignment().apply(this);
     }
 
     //declara una variable string y la asigna a un valor.
     @Override
-    public void casoAStringAsignar(AStringDeclarationAssignmentDeclaration node) {
+    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node) {
         node.getAssignment().apply(this);
     }
 
     //asignar un valor de cadena a una variable string.
     @Override
-    public void casoAStringCadenaAsignar(AStrAssignmentAssignment node) {
+    public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node) {
         String varName = node.getVar().getText();
         String value = node.getStringLiteral().getText().replace("\"", "");
         variables.put(varName, value);
@@ -59,7 +59,7 @@ public class Interpreter extends DepthFirstAdapter {
 
     //asignar el resultado a una variable int o double.
     @Override
-    public void casoAExpresionAsignar(AExprAssignmentAssignment node) {
+    public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node) {
         String varName = node.getVar().getText();
         Object value = evalExpr(node.getExpr());
         variables.put(varName, value);
@@ -68,63 +68,63 @@ public class Interpreter extends DepthFirstAdapter {
     // ======= Imprimir =======
     //imprimir el valor de una variable y un salto de línea.
       @Override
-    public void casoAPrintlnVariable(APrintlnVarLine node) {
+    public void caseAPrintlnVarLine(APrintlnVarLine node) {
         System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
     }
 
     //imprimir un numero y salto de línea.
     @Override
-    public void casoAPrintlnNumero(APrintlnNumberLine node) {
+    public void caseAPrintlnNumberLine(APrintlnNumberLine node) {
         System.out.println(node.getNumber().getText());
     }
 
     //imprimir una cadena y salto de línea.
     @Override
-    public void casoAPrintlnString(APrintlnStringLine node) {
+    public void caseAPrintlnStringLine(APrintlnStringLine node) {
         System.out.println(node.getStringLiteral().getText().replace("\"", ""));
     }
 
     //imprimir el valor de una variable sin salto de línea.
     @Override
-    public void casoAPrintVariable(APrintVarLine node) {
+    public void caseAPrintVarLine(APrintVarLine node) {
         System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
     }
 
     //imprimir un numero sin salto de línea.
     @Override
-    public void casoAPrintNumero(APrintNumberLine node) {
+    public void caseAPrintNumberLine(APrintNumberLine node) {
         System.out.println(node.getNumber().getText());
     }
 
     //imprimir una cadena sin salto de línea.
     @Override
-    public void casoAPrintString(APrintStringLine node) {
+    public void caseAPrintStringLine(APrintStringLine node) {
         System.out.println(node.getStringLiteral().getText().replace("\"", ""));
     }
 
     // ======= Líneas de entrada y control de flujo =======
     //lee una entrada del usuario y la asigna a una variable.
     @Override
-    public void casoAEntrada(AInputLine node) {
+    public void caseAInputLine(AInputLine node) {
         String input = scanner.nextLine();
         variables.put(node.getVar().getText(), input);
     }
 
     //control de flujo: líneas de control como if, if/else, while.
     @Override
-    public void casoAControlFlujo(AFlowControlLine node) {
+    public void caseAFlowControlLine(AFlowControlLine node) {
         node.getFlowControl().apply(this);
     }
 
     //ejecuta una línea de asignación.
     @Override
-    public void casoALineaAsignacion(AAssignmentLine node) {
+    public void caseAAssignmentLine(AAssignmentLine node) {
         node.getAssignment().apply(this);
     }
 
     //ejecuta el bloque if
     @Override
-    public void casoAIf(AIfFlowControl node) {
+    public void caseAIfFlowControl(AIfFlowControl node) {
         if (evalCondicion(node.getCondition())) {
             for (PLine line : node.getLine()) {
                 line.apply(this);
@@ -134,7 +134,7 @@ public class Interpreter extends DepthFirstAdapter {
 
     //ejecuta el bloque if-else
     @Override
-    public void casoAIfElse(AIfElseFlowControl node) {
+    public void caseAIfElseFlowControl(AIfElseFlowControl node) {
         if (evalCondicion(node.getCondition())) {
             for (PLine line : node.getLine()) {
                 line.apply(this);
@@ -149,7 +149,7 @@ public class Interpreter extends DepthFirstAdapter {
 
     //ejecuta el bloque while
     @Override
-    public void casoAWhile(AWhileFlowControl node) {
+    public void caseAWhileFlowControl(AWhileFlowControl node) {
         while (evalCondicion(node.getCondition())) {
             for (PLine line : node.getLine()) {
                 line.apply(this);
@@ -306,7 +306,7 @@ public class Interpreter extends DepthFirstAdapter {
     // ======= Incremento y decremento =======
     //incrementa el valor de una variable en 1.
     @Override
-    public void casoAIncrementar(AIncrementLine node) {
+    public void caseAIncrementLine(AIncrementLine node) {
         String varName = node.getVar().getText();
         Object value = variables.getOrDefault(varName, 0);
         if (value instanceof Number) {
@@ -323,7 +323,7 @@ public class Interpreter extends DepthFirstAdapter {
 
     //decrementa el valor de una variable en 1.
     @Override
-    public void casoADecrementar(ADecrementLine node) {
+    public void caseADecrementLine(ADecrementLine node) {
         String varName = node.getVar().getText();
         Object value = variables.getOrDefault(varName, 0);
         if (value instanceof Number) {

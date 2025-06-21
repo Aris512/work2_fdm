@@ -52,7 +52,7 @@ public final class AInputLine extends PLine
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAEntrada(this);
+        ((Analysis) sw).caseAInputLine(this);
     }
 
     public TInput getInput()

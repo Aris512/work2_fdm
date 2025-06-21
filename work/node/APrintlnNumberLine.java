@@ -52,7 +52,7 @@ public final class APrintlnNumberLine extends PLine
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAPrintlnNumero(this);
+        ((Analysis) sw).caseAPrintlnNumberLine(this);
     }
 
     public TPrintln getPrintln()

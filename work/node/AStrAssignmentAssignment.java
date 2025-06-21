@@ -42,7 +42,7 @@ public final class AStrAssignmentAssignment extends PAssignment
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAStringCadenaAsignar(this);
+        ((Analysis) sw).caseAStrAssignmentAssignment(this);
     }
 
     public TVar getVar()

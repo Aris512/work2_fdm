@@ -42,7 +42,7 @@ public final class AIntDeclarationAssignmentDeclaration extends PDeclaration
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAIntAsignar(this);
+        ((Analysis) sw).caseAIntDeclarationAssignmentDeclaration(this);
     }
 
     public TInt getInt()

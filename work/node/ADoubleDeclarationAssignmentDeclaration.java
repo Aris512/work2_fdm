@@ -42,7 +42,7 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoADoubleAsignar(this);
+        ((Analysis) sw).caseADoubleDeclarationAssignmentDeclaration(this);
     }
 
     public TDouble getDouble()

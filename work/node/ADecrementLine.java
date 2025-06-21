@@ -42,7 +42,7 @@ public final class ADecrementLine extends PLine
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoADecrementar(this);
+        ((Analysis) sw).caseADecrementLine(this);
     }
 
     public TVar getVar()

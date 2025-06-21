@@ -63,7 +63,7 @@ public final class AWhileFlowControl extends PFlowControl
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAWhile(this);
+        ((Analysis) sw).caseAWhileFlowControl(this);
     }
 
     public TWhile getWhile()

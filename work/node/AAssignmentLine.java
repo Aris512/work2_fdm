@@ -37,7 +37,7 @@ public final class AAssignmentLine extends PLine
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoALineaAsignacion(this);
+        ((Analysis) sw).caseAAssignmentLine(this);
     }
 
     public PAssignment getAssignment()

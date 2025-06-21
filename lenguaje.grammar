@@ -10,7 +10,7 @@ Helpers
 
 Tokens
   comment = '/*' comment_char* '*/';
-  number = digit+ | digit+ '.' digit+;
+  number = '-'?digit+ | '-'? digit+ '.' digit+;
   string_literal = '"' non_quote* '"';
   int = 'int';
   double = 'double';

@@ -32,7 +32,7 @@ public final class AFlowControlLine extends PLine
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAControlFlujo(this);
+        ((Analysis) sw).caseAFlowControlLine(this);
     }
 
     public PFlowControl getFlowControl()

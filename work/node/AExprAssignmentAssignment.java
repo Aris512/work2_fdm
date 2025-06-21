@@ -42,7 +42,7 @@ public final class AExprAssignmentAssignment extends PAssignment
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAExpresionAsignar(this);
+        ((Analysis) sw).caseAExprAssignmentAssignment(this);
     }
 
     public TVar getVar()

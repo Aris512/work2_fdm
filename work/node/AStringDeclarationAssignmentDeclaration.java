@@ -42,7 +42,7 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).casoAStringAsignar(this);
+        ((Analysis) sw).caseAStringDeclarationAssignmentDeclaration(this);
     }
 
     public TString getString()

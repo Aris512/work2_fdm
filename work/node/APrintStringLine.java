@@ -52,7 +52,7 @@ public final class APrintStringLine extends PLine
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAPrintStringLine(this);
+        ((Analysis) sw).casoAPrintString(this);
     }
 
     public TPrint getPrint()

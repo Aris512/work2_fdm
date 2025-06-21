@@ -42,7 +42,7 @@ public final class AIncrementLine extends PLine
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAIncrementLine(this);
+        ((Analysis) sw).casoAIncrementar(this);
     }
 
     public TVar getVar()

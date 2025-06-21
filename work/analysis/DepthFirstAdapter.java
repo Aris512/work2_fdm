@@ -140,7 +140,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAIntDeclarationDeclaration(AIntDeclarationDeclaration node)
+    public void casoAIntDeclaracion(AIntDeclarationDeclaration node)
     {
         inAIntDeclarationDeclaration(node);
         if(node.getInt() != null)
@@ -169,7 +169,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node)
+    public void casoAStringDeclaracion(AStringDeclarationDeclaration node)
     {
         inAStringDeclarationDeclaration(node);
         if(node.getString() != null)
@@ -198,7 +198,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseADoubleDeclarationDeclaration(ADoubleDeclarationDeclaration node)
+    public void casoADoubleDeclaracion(ADoubleDeclarationDeclaration node)
     {
         inADoubleDeclarationDeclaration(node);
         if(node.getDouble() != null)
@@ -227,7 +227,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
+    public void casoAIntAsignar(AIntDeclarationAssignmentDeclaration node)
     {
         inAIntDeclarationAssignmentDeclaration(node);
         if(node.getInt() != null)
@@ -256,7 +256,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    public void casoAStringAsignar(AStringDeclarationAssignmentDeclaration node)
     {
         inAStringDeclarationAssignmentDeclaration(node);
         if(node.getString() != null)
@@ -285,7 +285,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
+    public void casoADoubleAsignar(ADoubleDeclarationAssignmentDeclaration node)
     {
         inADoubleDeclarationAssignmentDeclaration(node);
         if(node.getDouble() != null)
@@ -314,7 +314,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAPrintlnVarLine(APrintlnVarLine node)
+    public void casoAPrintlnVariable(APrintlnVarLine node)
     {
         inAPrintlnVarLine(node);
         if(node.getPrintln() != null)
@@ -351,7 +351,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAPrintlnStringLine(APrintlnStringLine node)
+    public void casoAPrintlnString(APrintlnStringLine node)
     {
         inAPrintlnStringLine(node);
         if(node.getPrintln() != null)
@@ -388,7 +388,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAPrintlnNumberLine(APrintlnNumberLine node)
+    public void casoAPrintlnNumero(APrintlnNumberLine node)
     {
         inAPrintlnNumberLine(node);
         if(node.getPrintln() != null)
@@ -425,7 +425,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAPrintVarLine(APrintVarLine node)
+    public void casoAPrintVariable(APrintVarLine node)
     {
         inAPrintVarLine(node);
         if(node.getPrint() != null)
@@ -462,7 +462,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAPrintStringLine(APrintStringLine node)
+    public void casoAPrintString(APrintStringLine node)
     {
         inAPrintStringLine(node);
         if(node.getPrint() != null)
@@ -499,7 +499,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAPrintNumberLine(APrintNumberLine node)
+    public void casoAPrintNumero(APrintNumberLine node)
     {
         inAPrintNumberLine(node);
         if(node.getPrint() != null)
@@ -536,7 +536,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAInputLine(AInputLine node)
+    public void casoAEntrada(AInputLine node)
     {
         inAInputLine(node);
         if(node.getInput() != null)
@@ -573,7 +573,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAIncrementLine(AIncrementLine node)
+    public void casoAIncrementar(AIncrementLine node)
     {
         inAIncrementLine(node);
         if(node.getVar() != null)
@@ -602,7 +602,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseADecrementLine(ADecrementLine node)
+    public void casoADecrementar(ADecrementLine node)
     {
         inADecrementLine(node);
         if(node.getVar() != null)
@@ -631,7 +631,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAFlowControlLine(AFlowControlLine node)
+    public void casoAControlFlujo(AFlowControlLine node)
     {
         inAFlowControlLine(node);
         if(node.getFlowControl() != null)
@@ -652,7 +652,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAAssignmentLine(AAssignmentLine node)
+    public void casoALineaAsignacion(AAssignmentLine node)
     {
         inAAssignmentLine(node);
         if(node.getAssignment() != null)
@@ -677,7 +677,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAIfFlowControl(AIfFlowControl node)
+    public void casoAIf(AIfFlowControl node)
     {
         inAIfFlowControl(node);
         if(node.getIf() != null)
@@ -725,7 +725,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAIfElseFlowControl(AIfElseFlowControl node)
+    public void casoAIfElse(AIfElseFlowControl node)
     {
         inAIfElseFlowControl(node);
         if(node.getIf() != null)
@@ -777,7 +777,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAWhileFlowControl(AWhileFlowControl node)
+    public void casoAWhile(AWhileFlowControl node)
     {
         inAWhileFlowControl(node);
         if(node.getWhile() != null)
@@ -1269,7 +1269,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node)
+    public void casoAStringCadenaAsignar(AStrAssignmentAssignment node)
     {
         inAStrAssignmentAssignment(node);
         if(node.getVar() != null)
@@ -1298,7 +1298,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
     }
 
     @Override
-    public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node)
+    public void casoAExpresionAsignar(AExprAssignmentAssignment node)
     {
         inAExprAssignmentAssignment(node);
         if(node.getVar() != null)

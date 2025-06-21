@@ -1,25 +1,4 @@
 main() {
- int side1;
- int side2;
- int side3;
- /*ingresar lados del triangulo*/
- println("ingrese el lado 1: ");
- input(side1);
- println("ingrese el lado 2: ");
- input(side2);
- println("ingrese el lado 3: ");
- input(side3);
-
- if(side1==side2 && side2==side3){
-  /* si todos los lados son iguales*/
-  println("tringualo equilatero");
- }
- if(side1==side2 || side1==side3 || side2==side3){
-  /* si hay dos lados iguales*/
-  println("tringualo isosceles");
- }
- if(side1!=side2 && side1!=side3 && side2!=side3){
-  /*si no hay lados iguales*/
-  println("triangulo escaleno");
- }
+ int side1 = -10;
+ print(side1);
 }

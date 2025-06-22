@@ -15,6 +15,8 @@
 
 ## Instalación
 
+### Windows
+
 1. **Clona el repositorio**  
    Crea una carpeta en `C:\` y clona el repositorio ahí.  
    Ejemplo de ruta final:  
@@ -24,6 +26,22 @@
 
 2. **Genera el parser**  
    Abre una terminal en la carpeta `work2_fdm` (clic derecho > "Abrir en terminal aquí") y ejecuta:
+   ```sh
+   sablecc lenguaje.grammar
+   ```
+   Si todo es correcto, verás mensajes sobre la construcción del NFA/DFA y la generación del parser.
+
+### Linux
+
+1. **Clona el repositorio**  
+   Elige una carpeta de tu preferencia y clona el repositorio ahí.  
+   Ejemplo de ruta final:  
+   ```
+   ~/SableCC/work2_fdm
+   ```
+
+2. **Genera el parser**  
+   Abre una terminal en la carpeta `work2_fdm` y ejecuta:
    ```sh
    sablecc lenguaje.grammar
    ```

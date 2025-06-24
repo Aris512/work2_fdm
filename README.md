@@ -52,8 +52,8 @@
 Desde la terminal en la carpeta `work2_fdm`, ejecuta:
 
 ```sh
-javac work\Main.java
 javac work\Interpreter.java
+javac work\Main.java
 ```
 
 ## Ejecución

@@ -1,25 +1,23 @@
 main() {
- int side1;
- int side2;
- int side3;
- /*ingresar lados del triangulo*/
- println("ingrese el lado 1: ");
- input(side1);
- println("ingrese el lado 2: ");
- input(side2);
- println("ingrese el lado 3: ");
- input(side3);
-
- if(side1==side2 && side2==side3){
-  /* si todos los lados son iguales*/
-  println("tringualo equilatero");
- }
- if(side1==side2 || side1==side3 || side2==side3){
-  /* si hay dos lados iguales*/
-  println("tringualo isosceles");
- }
- if(side1!=side2 && side1!=side3 && side2!=side3){
-  /*si no hay lados iguales*/
-  println("triangulo escaleno");
- }
+    int f;
+    int i = 1;
+    println("Ingrese el número de filas");
+    input(f);
+    while(i <= f) {
+        int espacio = f - i;
+        int j = 0;
+        /*Imprime los espacios antes de los asteriscos*/
+        while(j < espacio) {
+            print(" ");
+            j++;
+        }
+        int k = 0;
+        /*Imprime los asteriscos de la fila actual*/
+        while(k < (2 * i - 1)) {
+            print("*");
+            k++;
+        }
+        println("");
+        i++;
+    }
 }

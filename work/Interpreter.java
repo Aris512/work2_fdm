@@ -93,27 +93,43 @@ public class Interpreter extends DepthFirstAdapter {
     // imprimir el valor de una variable sin salto de línea.
     @Override
     public void caseAPrintVarLine(APrintVarLine node) {
-        System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
+        System.out.print(variables.getOrDefault(node.getVar().getText(), "undefined"));
     }
 
     // imprimir un numero sin salto de línea.
     @Override
     public void caseAPrintNumberLine(APrintNumberLine node) {
-        System.out.println(node.getNumber().getText());
+        System.out.print(node.getNumber().getText());
     }
 
     // imprimir una cadena sin salto de línea.
     @Override
     public void caseAPrintStringLine(APrintStringLine node) {
-        System.out.println(node.getStringLiteral().getText().replace("\"", ""));
+        System.out.print(node.getStringLiteral().getText().replace("\"", ""));
     }
 
     // ======= Líneas de entrada y control de flujo =======
     // lee una entrada del usuario y la asigna a una variable.
     @Override
     public void caseAInputLine(AInputLine node) {
+        String varName = node.getVar().getText();
         String input = scanner.nextLine();
-        variables.put(node.getVar().getText(), input);
+        Object oldValue = variables.get(varName);
+        if (oldValue instanceof Integer) {
+            try {
+                variables.put(varName, Integer.parseInt(input));
+            } catch (Exception e) {
+                variables.put(varName, 0);
+            }
+        } else if (oldValue instanceof Double) {
+            try {
+                variables.put(varName, Double.parseDouble(input));
+            } catch (Exception e) {
+                variables.put(varName, 0.0);
+            }
+        } else {
+            variables.put(varName, input);
+        }
     }
 
     // control de flujo: líneas de control como if, if/else, while.
@@ -294,26 +310,37 @@ public class Interpreter extends DepthFirstAdapter {
     }
 
     // Método general para evaluar cualquier nodo de expresión
-    private Object eval(Object node) {
+    public Object eval(Node node) {
         if (node instanceof PExpr) {
             return evalExpr((PExpr) node);
         } else if (node instanceof PFactor) {
             return evalFactor((PFactor) node);
         } else if (node instanceof PTerm) {
             return evalTerm((PTerm) node);
-        } else if (node instanceof String) {
-            return node;
+        } else if (node instanceof AExprItem1) {
+            // Soporte para condiciones relacionales como i<=f
+            AExprItem1 expr = (AExprItem1) node;
+            return eval(expr.getExpr());
+        } else if (node instanceof AExprItem2) {
+            AExprItem2 expr = (AExprItem2) node;
+            return eval(expr.getExpr());
         }
         throw new RuntimeException("Tipo de nodo no soportado en eval: " + node.getClass().getSimpleName());
     }
 
     // Convierte un objeto a double, si es posible
     private double toDouble(Object value) {
+        if (value == null) {
+            return 0;
+        }
         if (value instanceof Number) {
             return ((Number) value).doubleValue();
         }
+        String s = value.toString().trim();
+        if (s.isEmpty())
+            return 0;
         try {
-            return Double.parseDouble(value.toString());
+            return Double.parseDouble(s);
         } catch (Exception e) {
             throw new RuntimeException("No se puede convertir a double: " + value);
         }

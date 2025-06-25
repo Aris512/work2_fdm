@@ -5,94 +5,44 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMultFactor extends PFactor
+public final class ADivTerm extends PTerm
 {
-    private PFactor _factor_;
-    private TMult _mult_;
     private PTerm _term_;
+    private TDiv _div_;
+    private PUnary _unary_;
 
-    public AMultFactor()
+    public ADivTerm()
     {
         // Constructor
     }
 
-    public AMultFactor(
-        @SuppressWarnings("hiding") PFactor _factor_,
-        @SuppressWarnings("hiding") TMult _mult_,
-        @SuppressWarnings("hiding") PTerm _term_)
+    public ADivTerm(
+        @SuppressWarnings("hiding") PTerm _term_,
+        @SuppressWarnings("hiding") TDiv _div_,
+        @SuppressWarnings("hiding") PUnary _unary_)
     {
         // Constructor
-        setFactor(_factor_);
-
-        setMult(_mult_);
-
         setTerm(_term_);
+
+        setDiv(_div_);
+
+        setUnary(_unary_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AMultFactor(
-            cloneNode(this._factor_),
-            cloneNode(this._mult_),
-            cloneNode(this._term_));
+        return new ADivTerm(
+            cloneNode(this._term_),
+            cloneNode(this._div_),
+            cloneNode(this._unary_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMultFactor(this);
-    }
-
-    public PFactor getFactor()
-    {
-        return this._factor_;
-    }
-
-    public void setFactor(PFactor node)
-    {
-        if(this._factor_ != null)
-        {
-            this._factor_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._factor_ = node;
-    }
-
-    public TMult getMult()
-    {
-        return this._mult_;
-    }
-
-    public void setMult(TMult node)
-    {
-        if(this._mult_ != null)
-        {
-            this._mult_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._mult_ = node;
+        ((Analysis) sw).caseADivTerm(this);
     }
 
     public PTerm getTerm()
@@ -120,34 +70,84 @@ public final class AMultFactor extends PFactor
         this._term_ = node;
     }
 
+    public TDiv getDiv()
+    {
+        return this._div_;
+    }
+
+    public void setDiv(TDiv node)
+    {
+        if(this._div_ != null)
+        {
+            this._div_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._div_ = node;
+    }
+
+    public PUnary getUnary()
+    {
+        return this._unary_;
+    }
+
+    public void setUnary(PUnary node)
+    {
+        if(this._unary_ != null)
+        {
+            this._unary_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._unary_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._factor_)
-            + toString(this._mult_)
-            + toString(this._term_);
+            + toString(this._term_)
+            + toString(this._div_)
+            + toString(this._unary_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._factor_ == child)
-        {
-            this._factor_ = null;
-            return;
-        }
-
-        if(this._mult_ == child)
-        {
-            this._mult_ = null;
-            return;
-        }
-
         if(this._term_ == child)
         {
             this._term_ = null;
+            return;
+        }
+
+        if(this._div_ == child)
+        {
+            this._div_ = null;
+            return;
+        }
+
+        if(this._unary_ == child)
+        {
+            this._unary_ = null;
             return;
         }
 
@@ -158,21 +158,21 @@ public final class AMultFactor extends PFactor
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._factor_ == oldChild)
-        {
-            setFactor((PFactor) newChild);
-            return;
-        }
-
-        if(this._mult_ == oldChild)
-        {
-            setMult((TMult) newChild);
-            return;
-        }
-
         if(this._term_ == oldChild)
         {
             setTerm((PTerm) newChild);
+            return;
+        }
+
+        if(this._div_ == oldChild)
+        {
+            setDiv((TDiv) newChild);
+            return;
+        }
+
+        if(this._unary_ == oldChild)
+        {
+            setUnary((PUnary) newChild);
             return;
         }
 

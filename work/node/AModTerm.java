@@ -5,94 +5,44 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADivFactor extends PFactor
+public final class AModTerm extends PTerm
 {
-    private PFactor _factor_;
-    private TDiv _div_;
     private PTerm _term_;
+    private TMod _mod_;
+    private PUnary _unary_;
 
-    public ADivFactor()
+    public AModTerm()
     {
         // Constructor
     }
 
-    public ADivFactor(
-        @SuppressWarnings("hiding") PFactor _factor_,
-        @SuppressWarnings("hiding") TDiv _div_,
-        @SuppressWarnings("hiding") PTerm _term_)
+    public AModTerm(
+        @SuppressWarnings("hiding") PTerm _term_,
+        @SuppressWarnings("hiding") TMod _mod_,
+        @SuppressWarnings("hiding") PUnary _unary_)
     {
         // Constructor
-        setFactor(_factor_);
-
-        setDiv(_div_);
-
         setTerm(_term_);
+
+        setMod(_mod_);
+
+        setUnary(_unary_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ADivFactor(
-            cloneNode(this._factor_),
-            cloneNode(this._div_),
-            cloneNode(this._term_));
+        return new AModTerm(
+            cloneNode(this._term_),
+            cloneNode(this._mod_),
+            cloneNode(this._unary_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADivFactor(this);
-    }
-
-    public PFactor getFactor()
-    {
-        return this._factor_;
-    }
-
-    public void setFactor(PFactor node)
-    {
-        if(this._factor_ != null)
-        {
-            this._factor_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._factor_ = node;
-    }
-
-    public TDiv getDiv()
-    {
-        return this._div_;
-    }
-
-    public void setDiv(TDiv node)
-    {
-        if(this._div_ != null)
-        {
-            this._div_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._div_ = node;
+        ((Analysis) sw).caseAModTerm(this);
     }
 
     public PTerm getTerm()
@@ -120,34 +70,84 @@ public final class ADivFactor extends PFactor
         this._term_ = node;
     }
 
+    public TMod getMod()
+    {
+        return this._mod_;
+    }
+
+    public void setMod(TMod node)
+    {
+        if(this._mod_ != null)
+        {
+            this._mod_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._mod_ = node;
+    }
+
+    public PUnary getUnary()
+    {
+        return this._unary_;
+    }
+
+    public void setUnary(PUnary node)
+    {
+        if(this._unary_ != null)
+        {
+            this._unary_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._unary_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._factor_)
-            + toString(this._div_)
-            + toString(this._term_);
+            + toString(this._term_)
+            + toString(this._mod_)
+            + toString(this._unary_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._factor_ == child)
-        {
-            this._factor_ = null;
-            return;
-        }
-
-        if(this._div_ == child)
-        {
-            this._div_ = null;
-            return;
-        }
-
         if(this._term_ == child)
         {
             this._term_ = null;
+            return;
+        }
+
+        if(this._mod_ == child)
+        {
+            this._mod_ = null;
+            return;
+        }
+
+        if(this._unary_ == child)
+        {
+            this._unary_ = null;
             return;
         }
 
@@ -158,21 +158,21 @@ public final class ADivFactor extends PFactor
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._factor_ == oldChild)
-        {
-            setFactor((PFactor) newChild);
-            return;
-        }
-
-        if(this._div_ == oldChild)
-        {
-            setDiv((TDiv) newChild);
-            return;
-        }
-
         if(this._term_ == oldChild)
         {
             setTerm((PTerm) newChild);
+            return;
+        }
+
+        if(this._mod_ == oldChild)
+        {
+            setMod((TMod) newChild);
+            return;
+        }
+
+        if(this._unary_ == oldChild)
+        {
+            setUnary((PUnary) newChild);
             return;
         }
 

@@ -5,18 +5,18 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExprTerm extends PTerm
+public final class AGroupedFactor extends PFactor
 {
     private TLPar _lPar_;
     private PExpr _expr_;
     private TRPar _rPar_;
 
-    public AExprTerm()
+    public AGroupedFactor()
     {
         // Constructor
     }
 
-    public AExprTerm(
+    public AGroupedFactor(
         @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PExpr _expr_,
         @SuppressWarnings("hiding") TRPar _rPar_)
@@ -33,7 +33,7 @@ public final class AExprTerm extends PTerm
     @Override
     public Object clone()
     {
-        return new AExprTerm(
+        return new AGroupedFactor(
             cloneNode(this._lPar_),
             cloneNode(this._expr_),
             cloneNode(this._rPar_));
@@ -42,7 +42,7 @@ public final class AExprTerm extends PTerm
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExprTerm(this);
+        ((Analysis) sw).caseAGroupedFactor(this);
     }
 
     public TLPar getLPar()

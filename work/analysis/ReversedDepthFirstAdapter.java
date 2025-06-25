@@ -120,15 +120,118 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
-        {
-            List<PDeclaration> copy = new ArrayList<PDeclaration>(node.getDeclaration());
-            Collections.reverse(copy);
-            for(PDeclaration e : copy)
-            {
-                e.apply(this);
-            }
-        }
         outAFormatDecProgram(node);
+    }
+
+    public void inAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
+    {
+        inAIntDeclarationAssignmentDeclaration(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getExpr() != null)
+        {
+            node.getExpr().apply(this);
+        }
+        if(node.getEquals() != null)
+        {
+            node.getEquals().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getInt() != null)
+        {
+            node.getInt().apply(this);
+        }
+        outAIntDeclarationAssignmentDeclaration(node);
+    }
+
+    public void inAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    {
+        inAStringDeclarationAssignmentDeclaration(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getStringLiteral() != null)
+        {
+            node.getStringLiteral().apply(this);
+        }
+        if(node.getEquals() != null)
+        {
+            node.getEquals().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getString() != null)
+        {
+            node.getString().apply(this);
+        }
+        outAStringDeclarationAssignmentDeclaration(node);
+    }
+
+    public void inADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
+    {
+        inADoubleDeclarationAssignmentDeclaration(node);
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        if(node.getExpr() != null)
+        {
+            node.getExpr().apply(this);
+        }
+        if(node.getEquals() != null)
+        {
+            node.getEquals().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getDouble() != null)
+        {
+            node.getDouble().apply(this);
+        }
+        outADoubleDeclarationAssignmentDeclaration(node);
     }
 
     public void inAIntDeclarationDeclaration(AIntDeclarationDeclaration node)
@@ -218,91 +321,83 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outADoubleDeclarationDeclaration(node);
     }
 
-    public void inAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
+    public void inAStrAssignmentAssignment(AStrAssignmentAssignment node)
     {
         defaultIn(node);
     }
 
-    public void outAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
+    public void outAStrAssignmentAssignment(AStrAssignmentAssignment node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
+    public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node)
     {
-        inAIntDeclarationAssignmentDeclaration(node);
-        if(node.getSemicolon() != null)
+        inAStrAssignmentAssignment(node);
+        if(node.getStringLiteral() != null)
         {
-            node.getSemicolon().apply(this);
+            node.getStringLiteral().apply(this);
         }
-        if(node.getAssignment() != null)
+        if(node.getEquals() != null)
         {
-            node.getAssignment().apply(this);
+            node.getEquals().apply(this);
         }
-        if(node.getInt() != null)
+        if(node.getVar() != null)
         {
-            node.getInt().apply(this);
+            node.getVar().apply(this);
         }
-        outAIntDeclarationAssignmentDeclaration(node);
+        outAStrAssignmentAssignment(node);
     }
 
-    public void inAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    public void inAExprAssignmentAssignment(AExprAssignmentAssignment node)
     {
         defaultIn(node);
     }
 
-    public void outAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    public void outAExprAssignmentAssignment(AExprAssignmentAssignment node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node)
     {
-        inAStringDeclarationAssignmentDeclaration(node);
-        if(node.getSemicolon() != null)
+        inAExprAssignmentAssignment(node);
+        if(node.getExpr() != null)
         {
-            node.getSemicolon().apply(this);
+            node.getExpr().apply(this);
         }
-        if(node.getAssignment() != null)
+        if(node.getEquals() != null)
         {
-            node.getAssignment().apply(this);
+            node.getEquals().apply(this);
         }
-        if(node.getString() != null)
+        if(node.getVar() != null)
         {
-            node.getString().apply(this);
+            node.getVar().apply(this);
         }
-        outAStringDeclarationAssignmentDeclaration(node);
+        outAExprAssignmentAssignment(node);
     }
 
-    public void inADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
+    public void inADeclarationLine(ADeclarationLine node)
     {
         defaultIn(node);
     }
 
-    public void outADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
+    public void outADeclarationLine(ADeclarationLine node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
+    public void caseADeclarationLine(ADeclarationLine node)
     {
-        inADoubleDeclarationAssignmentDeclaration(node);
-        if(node.getSemicolon() != null)
+        inADeclarationLine(node);
+        if(node.getDeclaration() != null)
         {
-            node.getSemicolon().apply(this);
+            node.getDeclaration().apply(this);
         }
-        if(node.getAssignment() != null)
-        {
-            node.getAssignment().apply(this);
-        }
-        if(node.getDouble() != null)
-        {
-            node.getDouble().apply(this);
-        }
-        outADoubleDeclarationAssignmentDeclaration(node);
+        outADeclarationLine(node);
     }
 
     public void inAPrintlnVarLine(APrintlnVarLine node)
@@ -1109,238 +1204,46 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outALessEqSecondCondition(node);
     }
 
-    public void inAGroupedSecondCondition(AGroupedSecondCondition node)
+    public void inAExprItem1(AExprItem1 node)
     {
         defaultIn(node);
     }
 
-    public void outAGroupedSecondCondition(AGroupedSecondCondition node)
+    public void outAExprItem1(AExprItem1 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAGroupedSecondCondition(AGroupedSecondCondition node)
+    public void caseAExprItem1(AExprItem1 node)
     {
-        inAGroupedSecondCondition(node);
-        if(node.getRPar() != null)
-        {
-            node.getRPar().apply(this);
-        }
-        if(node.getCondition() != null)
-        {
-            node.getCondition().apply(this);
-        }
-        if(node.getLPar() != null)
-        {
-            node.getLPar().apply(this);
-        }
-        outAGroupedSecondCondition(node);
-    }
-
-    public void inAVarItem1(AVarItem1 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAVarItem1(AVarItem1 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAVarItem1(AVarItem1 node)
-    {
-        inAVarItem1(node);
-        if(node.getVar() != null)
-        {
-            node.getVar().apply(this);
-        }
-        outAVarItem1(node);
-    }
-
-    public void inANumberItem1(ANumberItem1 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outANumberItem1(ANumberItem1 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseANumberItem1(ANumberItem1 node)
-    {
-        inANumberItem1(node);
-        if(node.getNumber() != null)
-        {
-            node.getNumber().apply(this);
-        }
-        outANumberItem1(node);
-    }
-
-    public void inAStrItem1(AStrItem1 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAStrItem1(AStrItem1 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAStrItem1(AStrItem1 node)
-    {
-        inAStrItem1(node);
-        if(node.getStringLiteral() != null)
-        {
-            node.getStringLiteral().apply(this);
-        }
-        outAStrItem1(node);
-    }
-
-    public void inAVarItem2(AVarItem2 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAVarItem2(AVarItem2 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAVarItem2(AVarItem2 node)
-    {
-        inAVarItem2(node);
-        if(node.getVar() != null)
-        {
-            node.getVar().apply(this);
-        }
-        outAVarItem2(node);
-    }
-
-    public void inANumberItem2(ANumberItem2 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outANumberItem2(ANumberItem2 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseANumberItem2(ANumberItem2 node)
-    {
-        inANumberItem2(node);
-        if(node.getNumber() != null)
-        {
-            node.getNumber().apply(this);
-        }
-        outANumberItem2(node);
-    }
-
-    public void inAStrItem2(AStrItem2 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAStrItem2(AStrItem2 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAStrItem2(AStrItem2 node)
-    {
-        inAStrItem2(node);
-        if(node.getStringLiteral() != null)
-        {
-            node.getStringLiteral().apply(this);
-        }
-        outAStrItem2(node);
-    }
-
-    public void inAStrAssignmentAssignment(AStrAssignmentAssignment node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAStrAssignmentAssignment(AStrAssignmentAssignment node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node)
-    {
-        inAStrAssignmentAssignment(node);
-        if(node.getStringLiteral() != null)
-        {
-            node.getStringLiteral().apply(this);
-        }
-        if(node.getEquals() != null)
-        {
-            node.getEquals().apply(this);
-        }
-        if(node.getVar() != null)
-        {
-            node.getVar().apply(this);
-        }
-        outAStrAssignmentAssignment(node);
-    }
-
-    public void inAExprAssignmentAssignment(AExprAssignmentAssignment node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAExprAssignmentAssignment(AExprAssignmentAssignment node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node)
-    {
-        inAExprAssignmentAssignment(node);
+        inAExprItem1(node);
         if(node.getExpr() != null)
         {
             node.getExpr().apply(this);
         }
-        if(node.getEquals() != null)
-        {
-            node.getEquals().apply(this);
-        }
-        if(node.getVar() != null)
-        {
-            node.getVar().apply(this);
-        }
-        outAExprAssignmentAssignment(node);
+        outAExprItem1(node);
     }
 
-    public void inAFactorExpr(AFactorExpr node)
+    public void inAExprItem2(AExprItem2 node)
     {
         defaultIn(node);
     }
 
-    public void outAFactorExpr(AFactorExpr node)
+    public void outAExprItem2(AExprItem2 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAFactorExpr(AFactorExpr node)
+    public void caseAExprItem2(AExprItem2 node)
     {
-        inAFactorExpr(node);
-        if(node.getFactor() != null)
+        inAExprItem2(node);
+        if(node.getExpr() != null)
         {
-            node.getFactor().apply(this);
+            node.getExpr().apply(this);
         }
-        outAFactorExpr(node);
+        outAExprItem2(node);
     }
 
     public void inAPlusExpr(APlusExpr node)
@@ -1357,9 +1260,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPlusExpr(APlusExpr node)
     {
         inAPlusExpr(node);
-        if(node.getFactor() != null)
+        if(node.getTerm() != null)
         {
-            node.getFactor().apply(this);
+            node.getTerm().apply(this);
         }
         if(node.getPlus() != null)
         {
@@ -1386,9 +1289,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAMinusExpr(AMinusExpr node)
     {
         inAMinusExpr(node);
-        if(node.getFactor() != null)
+        if(node.getTerm() != null)
         {
-            node.getFactor().apply(this);
+            node.getTerm().apply(this);
         }
         if(node.getMinus() != null)
         {
@@ -1401,170 +1304,237 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAMinusExpr(node);
     }
 
-    public void inATermFactor(ATermFactor node)
+    public void inATermExpr(ATermExpr node)
     {
         defaultIn(node);
     }
 
-    public void outATermFactor(ATermFactor node)
+    public void outATermExpr(ATermExpr node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseATermFactor(ATermFactor node)
+    public void caseATermExpr(ATermExpr node)
     {
-        inATermFactor(node);
+        inATermExpr(node);
         if(node.getTerm() != null)
         {
             node.getTerm().apply(this);
         }
-        outATermFactor(node);
+        outATermExpr(node);
     }
 
-    public void inAMultFactor(AMultFactor node)
+    public void inAMultTerm(AMultTerm node)
     {
         defaultIn(node);
     }
 
-    public void outAMultFactor(AMultFactor node)
+    public void outAMultTerm(AMultTerm node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMultFactor(AMultFactor node)
+    public void caseAMultTerm(AMultTerm node)
     {
-        inAMultFactor(node);
-        if(node.getTerm() != null)
+        inAMultTerm(node);
+        if(node.getUnary() != null)
         {
-            node.getTerm().apply(this);
+            node.getUnary().apply(this);
         }
         if(node.getMult() != null)
         {
             node.getMult().apply(this);
         }
-        if(node.getFactor() != null)
+        if(node.getTerm() != null)
         {
-            node.getFactor().apply(this);
+            node.getTerm().apply(this);
         }
-        outAMultFactor(node);
+        outAMultTerm(node);
     }
 
-    public void inADivFactor(ADivFactor node)
+    public void inADivTerm(ADivTerm node)
     {
         defaultIn(node);
     }
 
-    public void outADivFactor(ADivFactor node)
+    public void outADivTerm(ADivTerm node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseADivFactor(ADivFactor node)
+    public void caseADivTerm(ADivTerm node)
     {
-        inADivFactor(node);
-        if(node.getTerm() != null)
+        inADivTerm(node);
+        if(node.getUnary() != null)
         {
-            node.getTerm().apply(this);
+            node.getUnary().apply(this);
         }
         if(node.getDiv() != null)
         {
             node.getDiv().apply(this);
         }
-        if(node.getFactor() != null)
+        if(node.getTerm() != null)
         {
-            node.getFactor().apply(this);
+            node.getTerm().apply(this);
         }
-        outADivFactor(node);
+        outADivTerm(node);
     }
 
-    public void inAModFactor(AModFactor node)
+    public void inAModTerm(AModTerm node)
     {
         defaultIn(node);
     }
 
-    public void outAModFactor(AModFactor node)
+    public void outAModTerm(AModTerm node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAModFactor(AModFactor node)
+    public void caseAModTerm(AModTerm node)
     {
-        inAModFactor(node);
-        if(node.getTerm() != null)
+        inAModTerm(node);
+        if(node.getUnary() != null)
         {
-            node.getTerm().apply(this);
+            node.getUnary().apply(this);
         }
         if(node.getMod() != null)
         {
             node.getMod().apply(this);
         }
+        if(node.getTerm() != null)
+        {
+            node.getTerm().apply(this);
+        }
+        outAModTerm(node);
+    }
+
+    public void inAUnaryTerm(AUnaryTerm node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAUnaryTerm(AUnaryTerm node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAUnaryTerm(AUnaryTerm node)
+    {
+        inAUnaryTerm(node);
+        if(node.getUnary() != null)
+        {
+            node.getUnary().apply(this);
+        }
+        outAUnaryTerm(node);
+    }
+
+    public void inANegUnary(ANegUnary node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANegUnary(ANegUnary node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANegUnary(ANegUnary node)
+    {
+        inANegUnary(node);
+        if(node.getUnary() != null)
+        {
+            node.getUnary().apply(this);
+        }
+        if(node.getMinus() != null)
+        {
+            node.getMinus().apply(this);
+        }
+        outANegUnary(node);
+    }
+
+    public void inAFactorUnary(AFactorUnary node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAFactorUnary(AFactorUnary node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAFactorUnary(AFactorUnary node)
+    {
+        inAFactorUnary(node);
         if(node.getFactor() != null)
         {
             node.getFactor().apply(this);
         }
-        outAModFactor(node);
+        outAFactorUnary(node);
     }
 
-    public void inANumberTerm(ANumberTerm node)
+    public void inANumberFactor(ANumberFactor node)
     {
         defaultIn(node);
     }
 
-    public void outANumberTerm(ANumberTerm node)
+    public void outANumberFactor(ANumberFactor node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseANumberTerm(ANumberTerm node)
+    public void caseANumberFactor(ANumberFactor node)
     {
-        inANumberTerm(node);
+        inANumberFactor(node);
         if(node.getNumber() != null)
         {
             node.getNumber().apply(this);
         }
-        outANumberTerm(node);
+        outANumberFactor(node);
     }
 
-    public void inAVarTerm(AVarTerm node)
+    public void inAVarFactor(AVarFactor node)
     {
         defaultIn(node);
     }
 
-    public void outAVarTerm(AVarTerm node)
+    public void outAVarFactor(AVarFactor node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAVarTerm(AVarTerm node)
+    public void caseAVarFactor(AVarFactor node)
     {
-        inAVarTerm(node);
+        inAVarFactor(node);
         if(node.getVar() != null)
         {
             node.getVar().apply(this);
         }
-        outAVarTerm(node);
+        outAVarFactor(node);
     }
 
-    public void inAExprTerm(AExprTerm node)
+    public void inAGroupedFactor(AGroupedFactor node)
     {
         defaultIn(node);
     }
 
-    public void outAExprTerm(AExprTerm node)
+    public void outAGroupedFactor(AGroupedFactor node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAExprTerm(AExprTerm node)
+    public void caseAGroupedFactor(AGroupedFactor node)
     {
-        inAExprTerm(node);
+        inAGroupedFactor(node);
         if(node.getRPar() != null)
         {
             node.getRPar().apply(this);
@@ -1577,6 +1547,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getLPar().apply(this);
         }
-        outAExprTerm(node);
+        outAGroupedFactor(node);
     }
 }

@@ -5,16 +5,16 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANumberItem1 extends PItem1
+public final class ANumberFactor extends PFactor
 {
     private TNumber _number_;
 
-    public ANumberItem1()
+    public ANumberFactor()
     {
         // Constructor
     }
 
-    public ANumberItem1(
+    public ANumberFactor(
         @SuppressWarnings("hiding") TNumber _number_)
     {
         // Constructor
@@ -25,14 +25,14 @@ public final class ANumberItem1 extends PItem1
     @Override
     public Object clone()
     {
-        return new ANumberItem1(
+        return new ANumberFactor(
             cloneNode(this._number_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANumberItem1(this);
+        ((Analysis) sw).caseANumberFactor(this);
     }
 
     public TNumber getNumber()

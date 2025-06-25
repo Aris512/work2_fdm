@@ -12,44 +12,50 @@ public class Interpreter extends DepthFirstAdapter {
     private final Map<String, Object> variables = new HashMap<>();
     private final Scanner scanner = new Scanner(System.in);
 
-    //declara una variable int e inicia en 0.
+    // declara una variable int e inicia en 0.
     @Override
     public void caseAIntDeclarationDeclaration(AIntDeclarationDeclaration node) {
         variables.put(node.getVar().getText(), 0);
     }
 
-    //declara una variable double e inicia en 0.0.
+    // declara una variable double e inicia en 0.0.
     @Override
     public void caseADoubleDeclarationDeclaration(ADoubleDeclarationDeclaration node) {
         variables.put(node.getVar().getText(), 0.0);
     }
 
-    //declara una variable string e inicia en "".
+    // declara una variable string e inicia en "".
     @Override
     public void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node) {
         variables.put(node.getVar().getText(), "");
     }
 
     // ======= Declaraciones y asignaciones =======
-    //declara una variable int y la asigna a un valor.
+    // declara una variable int y la asigna a un valor.
     @Override
     public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node) {
-        node.getAssignment().apply(this);
+        String varName = node.getVar().getText();
+        Object value = evalExpr(node.getExpr());
+        variables.put(varName, value);
     }
 
-    //declara una variable double y la asigna a un valor.
+    // declara una variable double y la asigna a un valor.
     @Override
     public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node) {
-        node.getAssignment().apply(this);
+        String varName = node.getVar().getText();
+        Object value = evalExpr(node.getExpr());
+        variables.put(varName, value);
     }
 
-    //declara una variable string y la asigna a un valor.
+    // declara una variable string y la asigna a un valor.
     @Override
     public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node) {
-        node.getAssignment().apply(this);
+        String varName = node.getVar().getText();
+        String value = node.getStringLiteral().getText().replace("\"", "");
+        variables.put(varName, value);
     }
 
-    //asignar un valor de cadena a una variable string.
+    // asignar un valor de cadena a una variable string.
     @Override
     public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node) {
         String varName = node.getVar().getText();
@@ -57,7 +63,7 @@ public class Interpreter extends DepthFirstAdapter {
         variables.put(varName, value);
     }
 
-    //asignar el resultado a una variable int o double.
+    // asignar el resultado a una variable int o double.
     @Override
     public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node) {
         String varName = node.getVar().getText();
@@ -66,63 +72,63 @@ public class Interpreter extends DepthFirstAdapter {
     }
 
     // ======= Imprimir =======
-    //imprimir el valor de una variable y un salto de línea.
-      @Override
+    // imprimir el valor de una variable y un salto de línea.
+    @Override
     public void caseAPrintlnVarLine(APrintlnVarLine node) {
         System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
     }
 
-    //imprimir un numero y salto de línea.
+    // imprimir un numero y salto de línea.
     @Override
     public void caseAPrintlnNumberLine(APrintlnNumberLine node) {
         System.out.println(node.getNumber().getText());
     }
 
-    //imprimir una cadena y salto de línea.
+    // imprimir una cadena y salto de línea.
     @Override
     public void caseAPrintlnStringLine(APrintlnStringLine node) {
         System.out.println(node.getStringLiteral().getText().replace("\"", ""));
     }
 
-    //imprimir el valor de una variable sin salto de línea.
+    // imprimir el valor de una variable sin salto de línea.
     @Override
     public void caseAPrintVarLine(APrintVarLine node) {
         System.out.println(variables.getOrDefault(node.getVar().getText(), "undefined"));
     }
 
-    //imprimir un numero sin salto de línea.
+    // imprimir un numero sin salto de línea.
     @Override
     public void caseAPrintNumberLine(APrintNumberLine node) {
         System.out.println(node.getNumber().getText());
     }
 
-    //imprimir una cadena sin salto de línea.
+    // imprimir una cadena sin salto de línea.
     @Override
     public void caseAPrintStringLine(APrintStringLine node) {
         System.out.println(node.getStringLiteral().getText().replace("\"", ""));
     }
 
     // ======= Líneas de entrada y control de flujo =======
-    //lee una entrada del usuario y la asigna a una variable.
+    // lee una entrada del usuario y la asigna a una variable.
     @Override
     public void caseAInputLine(AInputLine node) {
         String input = scanner.nextLine();
         variables.put(node.getVar().getText(), input);
     }
 
-    //control de flujo: líneas de control como if, if/else, while.
+    // control de flujo: líneas de control como if, if/else, while.
     @Override
     public void caseAFlowControlLine(AFlowControlLine node) {
         node.getFlowControl().apply(this);
     }
 
-    //ejecuta una línea de asignación.
+    // ejecuta una línea de asignación.
     @Override
     public void caseAAssignmentLine(AAssignmentLine node) {
         node.getAssignment().apply(this);
     }
 
-    //ejecuta el bloque if
+    // ejecuta el bloque if
     @Override
     public void caseAIfFlowControl(AIfFlowControl node) {
         if (evalCondicion(node.getCondition())) {
@@ -132,7 +138,7 @@ public class Interpreter extends DepthFirstAdapter {
         }
     }
 
-    //ejecuta el bloque if-else
+    // ejecuta el bloque if-else
     @Override
     public void caseAIfElseFlowControl(AIfElseFlowControl node) {
         if (evalCondicion(node.getCondition())) {
@@ -147,7 +153,7 @@ public class Interpreter extends DepthFirstAdapter {
         }
     }
 
-    //ejecuta el bloque while
+    // ejecuta el bloque while
     @Override
     public void caseAWhileFlowControl(AWhileFlowControl node) {
         while (evalCondicion(node.getCondition())) {
@@ -159,7 +165,7 @@ public class Interpreter extends DepthFirstAdapter {
 
     // ======= Evaluación de condiciones y expresiones =======
 
-    //evaluar una condición logica.
+    // evaluar una condición logica.
     private boolean evalCondicion(PCondition cond) {
         if (cond instanceof ASecondConditionCondition) {
             return evalSecondCondicion(((ASecondConditionCondition) cond).getSecondCondition());
@@ -173,138 +179,148 @@ public class Interpreter extends DepthFirstAdapter {
         return false;
     }
 
-    //evaluar una segunda condición.
+    // evaluar una segunda condición.
     private boolean evalSecondCondicion(PSecondCondition cond) {
         if (cond instanceof ADoubleEqualsSecondCondition) {
             ADoubleEqualsSecondCondition eq = (ADoubleEqualsSecondCondition) cond;
-            Object left = getValorItem(eq.getItem1());
-            Object right = getValorItem(eq.getItem2());
-            return left.equals(right);
+            Object left = eval(eq.getItem1());
+            Object right = eval(eq.getItem2());
+            return compareEquals(left, right);
         } else if (cond instanceof ANotEqualsSecondCondition) {
             ANotEqualsSecondCondition neq = (ANotEqualsSecondCondition) cond;
-            Object left = getValorItem(neq.getItem1());
-            Object right = getValorItem(neq.getItem2());
-            return !left.equals(right);
+            Object left = eval(neq.getItem1());
+            Object right = eval(neq.getItem2());
+            return !compareEquals(left, right);
         } else if (cond instanceof AGreaterSecondCondition) {
             AGreaterSecondCondition gt = (AGreaterSecondCondition) cond;
-            Object left = getValorItem(gt.getItem1());
-            Object right = getValorItem(gt.getItem2());
+            Object left = eval(gt.getItem1());
+            Object right = eval(gt.getItem2());
             return toDouble(left) > toDouble(right);
         } else if (cond instanceof AGreaterEqSecondCondition) {
             AGreaterEqSecondCondition ge = (AGreaterEqSecondCondition) cond;
-            Object left = getValorItem(ge.getItem1());
-            Object right = getValorItem(ge.getItem2());
+            Object left = eval(ge.getItem1());
+            Object right = eval(ge.getItem2());
             return toDouble(left) >= toDouble(right);
         } else if (cond instanceof ALessSecondCondition) {
             ALessSecondCondition lt = (ALessSecondCondition) cond;
-            Object left = getValorItem(lt.getItem1());
-            Object right = getValorItem(lt.getItem2());
+            Object left = eval(lt.getItem1());
+            Object right = eval(lt.getItem2());
             return toDouble(left) < toDouble(right);
         } else if (cond instanceof ALessEqSecondCondition) {
             ALessEqSecondCondition le = (ALessEqSecondCondition) cond;
-            Object left = getValorItem(le.getItem1());
-            Object right = getValorItem(le.getItem2());
+            Object left = eval(le.getItem1());
+            Object right = eval(le.getItem2());
             return toDouble(left) <= toDouble(right);
-        } else if (cond instanceof AGroupedSecondCondition) {
-            AGroupedSecondCondition group = (AGroupedSecondCondition) cond;
-            return evalCondicion(group.getCondition());
-        } else if (cond instanceof ADoubleEqualsSecondCondition) {
-            ADoubleEqualsSecondCondition eq = (ADoubleEqualsSecondCondition) cond;
-            Object left = getValorItem(eq.getItem1());
-            Object right = getValorItem(eq.getItem2());
-            return left.equals(right);
-        } else if (cond instanceof ANotEqualsSecondCondition) {
-            ANotEqualsSecondCondition neq = (ANotEqualsSecondCondition) cond;
-            Object left = getValorItem(neq.getItem1());
-            Object right = getValorItem(neq.getItem2());
-            return !left.equals(right);
         }
-
         throw new RuntimeException("Unknown condition type: " + cond.getClass().getSimpleName());
     }
 
-    //obtener el valor de un item, ya sea variable, número o cadena.
-    private Object getValorItem(PItem1 item) {
-        if (item instanceof AVarItem1) {
-            return variables.getOrDefault(((AVarItem1) item).getVar().getText(), 0);
-        } else if (item instanceof ANumberItem1) {
-            return Double.parseDouble(((ANumberItem1) item).getNumber().getText());
-        } else if (item instanceof AStrItem1) {
-            return ((AStrItem1) item).getStringLiteral().getText().replace("\"", "");
+    // Comparar igualdad considerando números y cadenas
+    private boolean compareEquals(Object left, Object right) {
+        if (left instanceof Number && right instanceof Number) {
+            return toDouble(left) == toDouble(right);
+        }
+        return String.valueOf(left).equals(String.valueOf(right));
+    }
+
+    // Evaluar una expresión aritmética o de cadena.
+    private Object evalExpr(PExpr expr) {
+        if (expr instanceof APlusExpr) {
+            Object left = evalExpr(((APlusExpr) expr).getExpr());
+            Object right = evalTerm(((APlusExpr) expr).getTerm());
+            if (left instanceof String || right instanceof String) {
+                return String.valueOf(left) + String.valueOf(right);
+            }
+            return toDouble(left) + toDouble(right);
+        } else if (expr instanceof AMinusExpr) {
+            Object left = evalExpr(((AMinusExpr) expr).getExpr());
+            Object right = evalTerm(((AMinusExpr) expr).getTerm());
+            if (left instanceof String || right instanceof String) {
+                return "";
+            }
+            return toDouble(left) - toDouble(right);
+        } else if (expr instanceof ATermExpr) {
+            return evalTerm(((ATermExpr) expr).getTerm());
         }
         return 0;
     }
 
-    //obtener el valor de un item 2, ya sea variable, número o cadena.
-    private Object getValorItem(PItem2 item) {
-        if (item instanceof AVarItem2) {
-            return variables.getOrDefault(((AVarItem2) item).getVar().getText(), 0);
-        } else if (item instanceof ANumberItem2) {
-            return Double.parseDouble(((ANumberItem2) item).getNumber().getText());
-        } else if (item instanceof AStrItem2) {
-            return ((AStrItem2) item).getStringLiteral().getText().replace("\"", "");
+    // Evaluar un término (multiplicación, división, módulo, o unario)
+    private Object evalTerm(PTerm term) {
+        if (term instanceof AMultTerm) {
+            Object left = evalTerm(((AMultTerm) term).getTerm());
+            Object right = evalUnary(((AMultTerm) term).getUnary());
+            return toDouble(left) * toDouble(right);
+        } else if (term instanceof ADivTerm) {
+            Object left = evalTerm(((ADivTerm) term).getTerm());
+            Object right = evalUnary(((ADivTerm) term).getUnary());
+            return toDouble(left) / toDouble(right);
+        } else if (term instanceof AModTerm) {
+            Object left = evalTerm(((AModTerm) term).getTerm());
+            Object right = evalUnary(((AModTerm) term).getUnary());
+            return toDouble(left) % toDouble(right);
+        } else if (term instanceof AUnaryTerm) {
+            return evalUnary(((AUnaryTerm) term).getUnary());
         }
         return 0;
     }
 
-    //convertir un valor a double.
-    private double toDouble(Object val) {
-        if (val instanceof Number) {
-            return ((Number) val).doubleValue();
+    // Evaluar unario (negativo o factor)
+    private Object evalUnary(PUnary unary) {
+        if (unary instanceof ANegUnary) {
+            Object value = evalUnary(((ANegUnary) unary).getUnary());
+            return -toDouble(value);
+        } else if (unary instanceof AFactorUnary) {
+            return evalFactor(((AFactorUnary) unary).getFactor());
+        }
+        return 0;
+    }
+
+    // Evaluar un factor (número, variable, agrupación)
+    private Object evalFactor(PFactor factor) {
+        if (factor instanceof ANumberFactor) {
+            String text = ((ANumberFactor) factor).getNumber().getText();
+            if (text.contains(".")) {
+                return Double.parseDouble(text);
+            } else {
+                return Integer.parseInt(text);
+            }
+        } else if (factor instanceof AVarFactor) {
+            return variables.getOrDefault(((AVarFactor) factor).getVar().getText(), 0);
+        } else if (factor instanceof AGroupedFactor) {
+            return evalExpr(((AGroupedFactor) factor).getExpr());
+        }
+        return 0;
+    }
+
+    // Método general para evaluar cualquier nodo de expresión
+    private Object eval(Object node) {
+        if (node instanceof PExpr) {
+            return evalExpr((PExpr) node);
+        } else if (node instanceof PFactor) {
+            return evalFactor((PFactor) node);
+        } else if (node instanceof PTerm) {
+            return evalTerm((PTerm) node);
+        } else if (node instanceof String) {
+            return node;
+        }
+        throw new RuntimeException("Tipo de nodo no soportado en eval: " + node.getClass().getSimpleName());
+    }
+
+    // Convierte un objeto a double, si es posible
+    private double toDouble(Object value) {
+        if (value instanceof Number) {
+            return ((Number) value).doubleValue();
         }
         try {
-            return Double.parseDouble(val.toString());
+            return Double.parseDouble(value.toString());
         } catch (Exception e) {
-            return 0;
+            throw new RuntimeException("No se puede convertir a double: " + value);
         }
-    }
-
-    //evaluar una expresion aritmética.
-    private Object evalExpr(PExpr expr) {
-        if (expr instanceof AFactorExpr) {
-            return evalFactor(((AFactorExpr) expr).getFactor());
-        } else if (expr instanceof APlusExpr) {
-            return toDouble(evalExpr(((APlusExpr) expr).getExpr())) +
-                    toDouble(evalFactor(((APlusExpr) expr).getFactor()));
-        } else if (expr instanceof AMinusExpr) {
-            return toDouble(evalExpr(((AMinusExpr) expr).getExpr())) -
-                    toDouble(evalFactor(((AMinusExpr) expr).getFactor()));
-        }
-        return 0;
-    }
-
-    //evaluar un factor, que puede ser un término o una operación aritmética.
-    private double evalFactor(PFactor factor) {
-        if (factor instanceof ATermFactor) {
-            return evalTerm(((ATermFactor) factor).getTerm());
-        } else if (factor instanceof AMultFactor) {
-            return evalFactor(((AMultFactor) factor).getFactor()) *
-                    evalTerm(((AMultFactor) factor).getTerm());
-        } else if (factor instanceof ADivFactor) {
-            return evalFactor(((ADivFactor) factor).getFactor()) /
-                    evalTerm(((ADivFactor) factor).getTerm());
-        } else if (factor instanceof AModFactor) {
-            return evalFactor(((AModFactor) factor).getFactor()) %
-                    evalTerm(((AModFactor) factor).getTerm());
-        }
-        return 0;
-    }
-
-    //evaluar un término, que puede ser un número, una variable o una expresión.
-    private double evalTerm(PTerm term) {
-        if (term instanceof ANumberTerm) {
-            return Double.parseDouble(((ANumberTerm) term).getNumber().getText());
-        } else if (term instanceof AVarTerm) {
-            Object val = variables.getOrDefault(((AVarTerm) term).getVar().getText(), 0);
-            return toDouble(val);
-        } else if (term instanceof AExprTerm) {
-            return toDouble(evalExpr(((AExprTerm) term).getExpr()));
-        }
-        return 0;
     }
 
     // ======= Incremento y decremento =======
-    //incrementa el valor de una variable en 1.
+    // incrementa el valor de una variable en 1.
     @Override
     public void caseAIncrementLine(AIncrementLine node) {
         String varName = node.getVar().getText();
@@ -321,7 +337,7 @@ public class Interpreter extends DepthFirstAdapter {
         }
     }
 
-    //decrementa el valor de una variable en 1.
+    // decrementa el valor de una variable en 1.
     @Override
     public void caseADecrementLine(ADecrementLine node) {
         String varName = node.getVar().getText();

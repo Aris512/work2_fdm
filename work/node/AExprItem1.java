@@ -5,46 +5,46 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AVarItem1 extends PItem1
+public final class AExprItem1 extends PItem1
 {
-    private TVar _var_;
+    private PExpr _expr_;
 
-    public AVarItem1()
+    public AExprItem1()
     {
         // Constructor
     }
 
-    public AVarItem1(
-        @SuppressWarnings("hiding") TVar _var_)
+    public AExprItem1(
+        @SuppressWarnings("hiding") PExpr _expr_)
     {
         // Constructor
-        setVar(_var_);
+        setExpr(_expr_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AVarItem1(
-            cloneNode(this._var_));
+        return new AExprItem1(
+            cloneNode(this._expr_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAVarItem1(this);
+        ((Analysis) sw).caseAExprItem1(this);
     }
 
-    public TVar getVar()
+    public PExpr getExpr()
     {
-        return this._var_;
+        return this._expr_;
     }
 
-    public void setVar(TVar node)
+    public void setExpr(PExpr node)
     {
-        if(this._var_ != null)
+        if(this._expr_ != null)
         {
-            this._var_.parent(null);
+            this._expr_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AVarItem1 extends PItem1
             node.parent(this);
         }
 
-        this._var_ = node;
+        this._expr_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._var_);
+            + toString(this._expr_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._var_ == child)
+        if(this._expr_ == child)
         {
-            this._var_ = null;
+            this._expr_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AVarItem1 extends PItem1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._var_ == oldChild)
+        if(this._expr_ == oldChild)
         {
-            setVar((TVar) newChild);
+            setExpr((PExpr) newChild);
             return;
         }
 

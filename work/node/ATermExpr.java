@@ -5,46 +5,46 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AVarItem2 extends PItem2
+public final class ATermExpr extends PExpr
 {
-    private TVar _var_;
+    private PTerm _term_;
 
-    public AVarItem2()
+    public ATermExpr()
     {
         // Constructor
     }
 
-    public AVarItem2(
-        @SuppressWarnings("hiding") TVar _var_)
+    public ATermExpr(
+        @SuppressWarnings("hiding") PTerm _term_)
     {
         // Constructor
-        setVar(_var_);
+        setTerm(_term_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AVarItem2(
-            cloneNode(this._var_));
+        return new ATermExpr(
+            cloneNode(this._term_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAVarItem2(this);
+        ((Analysis) sw).caseATermExpr(this);
     }
 
-    public TVar getVar()
+    public PTerm getTerm()
     {
-        return this._var_;
+        return this._term_;
     }
 
-    public void setVar(TVar node)
+    public void setTerm(PTerm node)
     {
-        if(this._var_ != null)
+        if(this._term_ != null)
         {
-            this._var_.parent(null);
+            this._term_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AVarItem2 extends PItem2
             node.parent(this);
         }
 
-        this._var_ = node;
+        this._term_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._var_);
+            + toString(this._term_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._var_ == child)
+        if(this._term_ == child)
         {
-            this._var_ = null;
+            this._term_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AVarItem2 extends PItem2
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._var_ == oldChild)
+        if(this._term_ == oldChild)
         {
-            setVar((TVar) newChild);
+            setTerm((PTerm) newChild);
             return;
         }
 

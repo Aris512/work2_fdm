@@ -8,7 +8,6 @@ import work.analysis.*;
 @SuppressWarnings("nls")
 public final class AFormatDecProgram extends PProgram
 {
-    private final LinkedList<PDeclaration> _declaration_ = new LinkedList<PDeclaration>();
     private final LinkedList<PLine> _line_ = new LinkedList<PLine>();
 
     public AFormatDecProgram()
@@ -17,12 +16,9 @@ public final class AFormatDecProgram extends PProgram
     }
 
     public AFormatDecProgram(
-        @SuppressWarnings("hiding") List<?> _declaration_,
         @SuppressWarnings("hiding") List<?> _line_)
     {
         // Constructor
-        setDeclaration(_declaration_);
-
         setLine(_line_);
 
     }
@@ -31,7 +27,6 @@ public final class AFormatDecProgram extends PProgram
     public Object clone()
     {
         return new AFormatDecProgram(
-            cloneList(this._declaration_),
             cloneList(this._line_));
     }
 
@@ -39,32 +34,6 @@ public final class AFormatDecProgram extends PProgram
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAFormatDecProgram(this);
-    }
-
-    public LinkedList<PDeclaration> getDeclaration()
-    {
-        return this._declaration_;
-    }
-
-    public void setDeclaration(List<?> list)
-    {
-        for(PDeclaration e : this._declaration_)
-        {
-            e.parent(null);
-        }
-        this._declaration_.clear();
-
-        for(Object obj_e : list)
-        {
-            PDeclaration e = (PDeclaration) obj_e;
-            if(e.parent() != null)
-            {
-                e.parent().removeChild(e);
-            }
-
-            e.parent(this);
-            this._declaration_.add(e);
-        }
     }
 
     public LinkedList<PLine> getLine()
@@ -97,7 +66,6 @@ public final class AFormatDecProgram extends PProgram
     public String toString()
     {
         return ""
-            + toString(this._declaration_)
             + toString(this._line_);
     }
 
@@ -105,11 +73,6 @@ public final class AFormatDecProgram extends PProgram
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._declaration_.remove(child))
-        {
-            return;
-        }
-
         if(this._line_.remove(child))
         {
             return;
@@ -122,24 +85,6 @@ public final class AFormatDecProgram extends PProgram
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        for(ListIterator<PDeclaration> i = this._declaration_.listIterator(); i.hasNext();)
-        {
-            if(i.next() == oldChild)
-            {
-                if(newChild != null)
-                {
-                    i.set((PDeclaration) newChild);
-                    newChild.parent(this);
-                    oldChild.parent(null);
-                    return;
-                }
-
-                i.remove();
-                oldChild.parent(null);
-                return;
-            }
-        }
-
         for(ListIterator<PLine> i = this._line_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

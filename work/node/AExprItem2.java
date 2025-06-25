@@ -5,46 +5,46 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANumberItem2 extends PItem2
+public final class AExprItem2 extends PItem2
 {
-    private TNumber _number_;
+    private PExpr _expr_;
 
-    public ANumberItem2()
+    public AExprItem2()
     {
         // Constructor
     }
 
-    public ANumberItem2(
-        @SuppressWarnings("hiding") TNumber _number_)
+    public AExprItem2(
+        @SuppressWarnings("hiding") PExpr _expr_)
     {
         // Constructor
-        setNumber(_number_);
+        setExpr(_expr_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANumberItem2(
-            cloneNode(this._number_));
+        return new AExprItem2(
+            cloneNode(this._expr_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANumberItem2(this);
+        ((Analysis) sw).caseAExprItem2(this);
     }
 
-    public TNumber getNumber()
+    public PExpr getExpr()
     {
-        return this._number_;
+        return this._expr_;
     }
 
-    public void setNumber(TNumber node)
+    public void setExpr(PExpr node)
     {
-        if(this._number_ != null)
+        if(this._expr_ != null)
         {
-            this._number_.parent(null);
+            this._expr_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class ANumberItem2 extends PItem2
             node.parent(this);
         }
 
-        this._number_ = node;
+        this._expr_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._number_);
+            + toString(this._expr_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._number_ == child)
+        if(this._expr_ == child)
         {
-            this._number_ = null;
+            this._expr_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class ANumberItem2 extends PItem2
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._number_ == oldChild)
+        if(this._expr_ == oldChild)
         {
-            setNumber((TNumber) newChild);
+            setExpr((PExpr) newChild);
             return;
         }
 

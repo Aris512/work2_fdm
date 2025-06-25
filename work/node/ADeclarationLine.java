@@ -5,46 +5,46 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ATermFactor extends PFactor
+public final class ADeclarationLine extends PLine
 {
-    private PTerm _term_;
+    private PDeclaration _declaration_;
 
-    public ATermFactor()
+    public ADeclarationLine()
     {
         // Constructor
     }
 
-    public ATermFactor(
-        @SuppressWarnings("hiding") PTerm _term_)
+    public ADeclarationLine(
+        @SuppressWarnings("hiding") PDeclaration _declaration_)
     {
         // Constructor
-        setTerm(_term_);
+        setDeclaration(_declaration_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ATermFactor(
-            cloneNode(this._term_));
+        return new ADeclarationLine(
+            cloneNode(this._declaration_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseATermFactor(this);
+        ((Analysis) sw).caseADeclarationLine(this);
     }
 
-    public PTerm getTerm()
+    public PDeclaration getDeclaration()
     {
-        return this._term_;
+        return this._declaration_;
     }
 
-    public void setTerm(PTerm node)
+    public void setDeclaration(PDeclaration node)
     {
-        if(this._term_ != null)
+        if(this._declaration_ != null)
         {
-            this._term_.parent(null);
+            this._declaration_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class ATermFactor extends PFactor
             node.parent(this);
         }
 
-        this._term_ = node;
+        this._declaration_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._term_);
+            + toString(this._declaration_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._term_ == child)
+        if(this._declaration_ == child)
         {
-            this._term_ = null;
+            this._declaration_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class ATermFactor extends PFactor
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._term_ == oldChild)
+        if(this._declaration_ == oldChild)
         {
-            setTerm((PTerm) newChild);
+            setDeclaration((PDeclaration) newChild);
             return;
         }
 

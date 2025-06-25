@@ -5,69 +5,39 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMinusExpr extends PExpr
+public final class ANegUnary extends PUnary
 {
-    private PExpr _expr_;
     private TMinus _minus_;
-    private PTerm _term_;
+    private PUnary _unary_;
 
-    public AMinusExpr()
+    public ANegUnary()
     {
         // Constructor
     }
 
-    public AMinusExpr(
-        @SuppressWarnings("hiding") PExpr _expr_,
+    public ANegUnary(
         @SuppressWarnings("hiding") TMinus _minus_,
-        @SuppressWarnings("hiding") PTerm _term_)
+        @SuppressWarnings("hiding") PUnary _unary_)
     {
         // Constructor
-        setExpr(_expr_);
-
         setMinus(_minus_);
 
-        setTerm(_term_);
+        setUnary(_unary_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AMinusExpr(
-            cloneNode(this._expr_),
+        return new ANegUnary(
             cloneNode(this._minus_),
-            cloneNode(this._term_));
+            cloneNode(this._unary_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMinusExpr(this);
-    }
-
-    public PExpr getExpr()
-    {
-        return this._expr_;
-    }
-
-    public void setExpr(PExpr node)
-    {
-        if(this._expr_ != null)
-        {
-            this._expr_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._expr_ = node;
+        ((Analysis) sw).caseANegUnary(this);
     }
 
     public TMinus getMinus()
@@ -95,16 +65,16 @@ public final class AMinusExpr extends PExpr
         this._minus_ = node;
     }
 
-    public PTerm getTerm()
+    public PUnary getUnary()
     {
-        return this._term_;
+        return this._unary_;
     }
 
-    public void setTerm(PTerm node)
+    public void setUnary(PUnary node)
     {
-        if(this._term_ != null)
+        if(this._unary_ != null)
         {
-            this._term_.parent(null);
+            this._unary_.parent(null);
         }
 
         if(node != null)
@@ -117,37 +87,30 @@ public final class AMinusExpr extends PExpr
             node.parent(this);
         }
 
-        this._term_ = node;
+        this._unary_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expr_)
             + toString(this._minus_)
-            + toString(this._term_);
+            + toString(this._unary_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expr_ == child)
-        {
-            this._expr_ = null;
-            return;
-        }
-
         if(this._minus_ == child)
         {
             this._minus_ = null;
             return;
         }
 
-        if(this._term_ == child)
+        if(this._unary_ == child)
         {
-            this._term_ = null;
+            this._unary_ = null;
             return;
         }
 
@@ -158,21 +121,15 @@ public final class AMinusExpr extends PExpr
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expr_ == oldChild)
-        {
-            setExpr((PExpr) newChild);
-            return;
-        }
-
         if(this._minus_ == oldChild)
         {
             setMinus((TMinus) newChild);
             return;
         }
 
-        if(this._term_ == oldChild)
+        if(this._unary_ == oldChild)
         {
-            setTerm((PTerm) newChild);
+            setUnary((PUnary) newChild);
             return;
         }
 

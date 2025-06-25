@@ -8,7 +8,9 @@ import work.analysis.*;
 public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
 {
     private TDouble _double_;
-    private PAssignment _assignment_;
+    private TVar _var_;
+    private TEquals _equals_;
+    private PExpr _expr_;
     private TSemicolon _semicolon_;
 
     public ADoubleDeclarationAssignmentDeclaration()
@@ -18,13 +20,19 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
 
     public ADoubleDeclarationAssignmentDeclaration(
         @SuppressWarnings("hiding") TDouble _double_,
-        @SuppressWarnings("hiding") PAssignment _assignment_,
+        @SuppressWarnings("hiding") TVar _var_,
+        @SuppressWarnings("hiding") TEquals _equals_,
+        @SuppressWarnings("hiding") PExpr _expr_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
         setDouble(_double_);
 
-        setAssignment(_assignment_);
+        setVar(_var_);
+
+        setEquals(_equals_);
+
+        setExpr(_expr_);
 
         setSemicolon(_semicolon_);
 
@@ -35,7 +43,9 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
     {
         return new ADoubleDeclarationAssignmentDeclaration(
             cloneNode(this._double_),
-            cloneNode(this._assignment_),
+            cloneNode(this._var_),
+            cloneNode(this._equals_),
+            cloneNode(this._expr_),
             cloneNode(this._semicolon_));
     }
 
@@ -70,16 +80,16 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
         this._double_ = node;
     }
 
-    public PAssignment getAssignment()
+    public TVar getVar()
     {
-        return this._assignment_;
+        return this._var_;
     }
 
-    public void setAssignment(PAssignment node)
+    public void setVar(TVar node)
     {
-        if(this._assignment_ != null)
+        if(this._var_ != null)
         {
-            this._assignment_.parent(null);
+            this._var_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +102,57 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
             node.parent(this);
         }
 
-        this._assignment_ = node;
+        this._var_ = node;
+    }
+
+    public TEquals getEquals()
+    {
+        return this._equals_;
+    }
+
+    public void setEquals(TEquals node)
+    {
+        if(this._equals_ != null)
+        {
+            this._equals_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._equals_ = node;
+    }
+
+    public PExpr getExpr()
+    {
+        return this._expr_;
+    }
+
+    public void setExpr(PExpr node)
+    {
+        if(this._expr_ != null)
+        {
+            this._expr_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._expr_ = node;
     }
 
     public TSemicolon getSemicolon()
@@ -125,7 +185,9 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
     {
         return ""
             + toString(this._double_)
-            + toString(this._assignment_)
+            + toString(this._var_)
+            + toString(this._equals_)
+            + toString(this._expr_)
             + toString(this._semicolon_);
     }
 
@@ -139,9 +201,21 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
             return;
         }
 
-        if(this._assignment_ == child)
+        if(this._var_ == child)
         {
-            this._assignment_ = null;
+            this._var_ = null;
+            return;
+        }
+
+        if(this._equals_ == child)
+        {
+            this._equals_ = null;
+            return;
+        }
+
+        if(this._expr_ == child)
+        {
+            this._expr_ = null;
             return;
         }
 
@@ -164,9 +238,21 @@ public final class ADoubleDeclarationAssignmentDeclaration extends PDeclaration
             return;
         }
 
-        if(this._assignment_ == oldChild)
+        if(this._var_ == oldChild)
         {
-            setAssignment((PAssignment) newChild);
+            setVar((TVar) newChild);
+            return;
+        }
+
+        if(this._equals_ == oldChild)
+        {
+            setEquals((TEquals) newChild);
+            return;
+        }
+
+        if(this._expr_ == oldChild)
+        {
+            setExpr((PExpr) newChild);
             return;
         }
 

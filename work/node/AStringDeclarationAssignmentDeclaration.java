@@ -8,7 +8,9 @@ import work.analysis.*;
 public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
 {
     private TString _string_;
-    private PAssignment _assignment_;
+    private TVar _var_;
+    private TEquals _equals_;
+    private TStringLiteral _stringLiteral_;
     private TSemicolon _semicolon_;
 
     public AStringDeclarationAssignmentDeclaration()
@@ -18,13 +20,19 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
 
     public AStringDeclarationAssignmentDeclaration(
         @SuppressWarnings("hiding") TString _string_,
-        @SuppressWarnings("hiding") PAssignment _assignment_,
+        @SuppressWarnings("hiding") TVar _var_,
+        @SuppressWarnings("hiding") TEquals _equals_,
+        @SuppressWarnings("hiding") TStringLiteral _stringLiteral_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
         setString(_string_);
 
-        setAssignment(_assignment_);
+        setVar(_var_);
+
+        setEquals(_equals_);
+
+        setStringLiteral(_stringLiteral_);
 
         setSemicolon(_semicolon_);
 
@@ -35,7 +43,9 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
     {
         return new AStringDeclarationAssignmentDeclaration(
             cloneNode(this._string_),
-            cloneNode(this._assignment_),
+            cloneNode(this._var_),
+            cloneNode(this._equals_),
+            cloneNode(this._stringLiteral_),
             cloneNode(this._semicolon_));
     }
 
@@ -70,16 +80,16 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
         this._string_ = node;
     }
 
-    public PAssignment getAssignment()
+    public TVar getVar()
     {
-        return this._assignment_;
+        return this._var_;
     }
 
-    public void setAssignment(PAssignment node)
+    public void setVar(TVar node)
     {
-        if(this._assignment_ != null)
+        if(this._var_ != null)
         {
-            this._assignment_.parent(null);
+            this._var_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +102,57 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
             node.parent(this);
         }
 
-        this._assignment_ = node;
+        this._var_ = node;
+    }
+
+    public TEquals getEquals()
+    {
+        return this._equals_;
+    }
+
+    public void setEquals(TEquals node)
+    {
+        if(this._equals_ != null)
+        {
+            this._equals_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._equals_ = node;
+    }
+
+    public TStringLiteral getStringLiteral()
+    {
+        return this._stringLiteral_;
+    }
+
+    public void setStringLiteral(TStringLiteral node)
+    {
+        if(this._stringLiteral_ != null)
+        {
+            this._stringLiteral_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._stringLiteral_ = node;
     }
 
     public TSemicolon getSemicolon()
@@ -125,7 +185,9 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
     {
         return ""
             + toString(this._string_)
-            + toString(this._assignment_)
+            + toString(this._var_)
+            + toString(this._equals_)
+            + toString(this._stringLiteral_)
             + toString(this._semicolon_);
     }
 
@@ -139,9 +201,21 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
             return;
         }
 
-        if(this._assignment_ == child)
+        if(this._var_ == child)
         {
-            this._assignment_ = null;
+            this._var_ = null;
+            return;
+        }
+
+        if(this._equals_ == child)
+        {
+            this._equals_ = null;
+            return;
+        }
+
+        if(this._stringLiteral_ == child)
+        {
+            this._stringLiteral_ = null;
             return;
         }
 
@@ -164,9 +238,21 @@ public final class AStringDeclarationAssignmentDeclaration extends PDeclaration
             return;
         }
 
-        if(this._assignment_ == oldChild)
+        if(this._var_ == oldChild)
         {
-            setAssignment((PAssignment) newChild);
+            setVar((TVar) newChild);
+            return;
+        }
+
+        if(this._equals_ == oldChild)
+        {
+            setEquals((TEquals) newChild);
+            return;
+        }
+
+        if(this._stringLiteral_ == oldChild)
+        {
+            setStringLiteral((TStringLiteral) newChild);
             return;
         }
 

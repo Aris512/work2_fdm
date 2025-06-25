@@ -5,46 +5,46 @@ package work.node;
 import work.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AVarTerm extends PTerm
+public final class AFactorUnary extends PUnary
 {
-    private TVar _var_;
+    private PFactor _factor_;
 
-    public AVarTerm()
+    public AFactorUnary()
     {
         // Constructor
     }
 
-    public AVarTerm(
-        @SuppressWarnings("hiding") TVar _var_)
+    public AFactorUnary(
+        @SuppressWarnings("hiding") PFactor _factor_)
     {
         // Constructor
-        setVar(_var_);
+        setFactor(_factor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AVarTerm(
-            cloneNode(this._var_));
+        return new AFactorUnary(
+            cloneNode(this._factor_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAVarTerm(this);
+        ((Analysis) sw).caseAFactorUnary(this);
     }
 
-    public TVar getVar()
+    public PFactor getFactor()
     {
-        return this._var_;
+        return this._factor_;
     }
 
-    public void setVar(TVar node)
+    public void setFactor(PFactor node)
     {
-        if(this._var_ != null)
+        if(this._factor_ != null)
         {
-            this._var_.parent(null);
+            this._factor_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AVarTerm extends PTerm
             node.parent(this);
         }
 
-        this._var_ = node;
+        this._factor_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._var_);
+            + toString(this._factor_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._var_ == child)
+        if(this._factor_ == child)
         {
-            this._var_ = null;
+            this._factor_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AVarTerm extends PTerm
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._var_ == oldChild)
+        if(this._factor_ == oldChild)
         {
-            setVar((TVar) newChild);
+            setFactor((PFactor) newChild);
             return;
         }
 

@@ -10,7 +10,7 @@ Helpers
 
 Tokens
   comment = '/*' comment_char* '*/';
-  number = '-'?digit+ | '-'? digit+ '.' digit+;
+  number = digit+ | digit+ '.' digit+;
   string_literal = '"' non_quote* '"';
   int = 'int';
   double = 'double';
@@ -55,17 +55,19 @@ Productions
   main_program = main l_par r_par l_bracket program r_bracket;
 
   program = 
-    {format_dec} declaration* line*;
+    {format_dec} line*;
 
   declaration = 
-    {int_declaration} int var semicolon | 
-    {string_declaration} string var semicolon | 
-    {double_declaration} double var semicolon | 
-    {int_declaration_assignment} int assignment semicolon | 
-    {string_declaration_assignment} string assignment semicolon | 
-    {double_declaration_assignment} double assignment semicolon;
+    {int_declaration} int var semicolon
+  | {string_declaration} string var semicolon
+  | {double_declaration} double var semicolon
+  | {int_declaration_assignment} int var equals expr semicolon
+  | {string_declaration_assignment} string var equals string_literal semicolon
+  | {double_declaration_assignment} double var equals expr semicolon
+  ;
 
-  line = 
+  line =
+    {declaration} declaration |
     {println_var} println l_par var r_par semicolon |
     {println_string} println l_par string_literal r_par semicolon |
     {println_number} println l_par number r_par semicolon |
@@ -99,33 +101,32 @@ Productions
     {less_eq} item1 less_eq item2 |
     {grouped} l_par condition r_par;
 
-  item1 =
-    {var} var |
-    {number} number |
-    {str} string_literal;
+  item1 = {expr} expr ;
 
-  item2 = 
-    {var} var |
-    {number} number |
-    {str} string_literal;
+  item2 = {expr} expr
+  ;
 
-  assignment = 
-    {str_assignment} var equals string_literal |
-    {expr_assignment} var equals expr;
+  assignment =
+    {str_assignment} var equals string_literal
+  | {expr_assignment} var equals expr
+  ;
 
-
-  expr = 
-    {factor} factor | 
-    {plus} expr plus factor |
-    {minus} expr minus factor;
-
-  factor =
-    {term} term |
-    {mult} factor mult term |
-    {div} factor div term | 
-    {mod} factor mod term;
+  expr =
+    {plus} expr plus term |
+    {minus} expr minus term |
+    {term} term;
 
   term =
+    {mult} term mult unary |
+    {div} term div unary |
+    {mod} term mod unary |
+    {unary} unary;
+
+  unary =
+    {neg} minus unary |
+    {factor} factor;
+
+  factor =
     {number} number |
     {var} var |
-    {expr} l_par expr r_par;
+    {grouped} l_par expr r_par;

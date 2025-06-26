@@ -93,24 +93,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseAIntDeclarationDeclaration(AIntDeclarationDeclaration node)
     {
         defaultCase(node);
@@ -129,13 +111,19 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node)
+    public void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node)
+    public void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node)
     {
         defaultCase(node);
     }
@@ -291,6 +279,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAGroupedSecondCondition(AGroupedSecondCondition node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAExprItem1(AExprItem1 node)
     {
         defaultCase(node);
@@ -298,6 +292,18 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAExprItem2(AExprItem2 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAStrAssignmentAssignment(AStrAssignmentAssignment node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExprAssignmentAssignment(AExprAssignmentAssignment node)
     {
         defaultCase(node);
     }
@@ -370,6 +376,18 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAGroupedFactor(AGroupedFactor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTComment(TComment node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNumber(TNumber node)
     {
         defaultCase(node);
     }
@@ -568,18 +586,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTVar(TVar node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTComment(TComment node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTNumber(TNumber node)
     {
         defaultCase(node);
     }

@@ -15,14 +15,12 @@ public interface Analysis extends Switch
     void caseAStart(AStart node);
     void caseAMainProgram(AMainProgram node);
     void caseAFormatDecProgram(AFormatDecProgram node);
-    void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node);
-    void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node);
-    void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node);
     void caseAIntDeclarationDeclaration(AIntDeclarationDeclaration node);
     void caseAStringDeclarationDeclaration(AStringDeclarationDeclaration node);
     void caseADoubleDeclarationDeclaration(ADoubleDeclarationDeclaration node);
-    void caseAStrAssignmentAssignment(AStrAssignmentAssignment node);
-    void caseAExprAssignmentAssignment(AExprAssignmentAssignment node);
+    void caseAIntDeclarationAssignmentDeclaration(AIntDeclarationAssignmentDeclaration node);
+    void caseAStringDeclarationAssignmentDeclaration(AStringDeclarationAssignmentDeclaration node);
+    void caseADoubleDeclarationAssignmentDeclaration(ADoubleDeclarationAssignmentDeclaration node);
     void caseADeclarationLine(ADeclarationLine node);
     void caseAPrintlnVarLine(APrintlnVarLine node);
     void caseAPrintlnStringLine(APrintlnStringLine node);
@@ -48,8 +46,11 @@ public interface Analysis extends Switch
     void caseAGreaterEqSecondCondition(AGreaterEqSecondCondition node);
     void caseALessSecondCondition(ALessSecondCondition node);
     void caseALessEqSecondCondition(ALessEqSecondCondition node);
+    void caseAGroupedSecondCondition(AGroupedSecondCondition node);
     void caseAExprItem1(AExprItem1 node);
     void caseAExprItem2(AExprItem2 node);
+    void caseAStrAssignmentAssignment(AStrAssignmentAssignment node);
+    void caseAExprAssignmentAssignment(AExprAssignmentAssignment node);
     void caseAPlusExpr(APlusExpr node);
     void caseAMinusExpr(AMinusExpr node);
     void caseATermExpr(ATermExpr node);
@@ -63,6 +64,8 @@ public interface Analysis extends Switch
     void caseAVarFactor(AVarFactor node);
     void caseAGroupedFactor(AGroupedFactor node);
 
+    void caseTComment(TComment node);
+    void caseTNumber(TNumber node);
     void caseTStringLiteral(TStringLiteral node);
     void caseTInt(TInt node);
     void caseTDouble(TDouble node);
@@ -96,8 +99,6 @@ public interface Analysis extends Switch
     void caseTWhile(TWhile node);
     void caseTInput(TInput node);
     void caseTVar(TVar node);
-    void caseTComment(TComment node);
-    void caseTNumber(TNumber node);
     void caseTBlank(TBlank node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
